@@ -7,7 +7,7 @@ Then /^I should see who follows them$/ do
 end
 
 When /^I get their followers ordered by "([^"]*)"$/ do |order|
-  @followers = Jammed::Followers.new(@username).send("followers_by_#{order}".to_sym)
+  @followers = Jammed::Followers.new(@username).send(:followers, "#{order}")
 end
 
 Then /^I should see their followers ordered by "([^"]*)"$/ do |order|
