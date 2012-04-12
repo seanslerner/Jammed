@@ -11,15 +11,18 @@ module Jammed
     end
 
     def likes
-      self.class.get "/#{self.username}/likes.json?key=#{API_KEY}"
+      all_likes = self.class.get "/#{self.username}/likes.json?key=#{API_KEY}"
+      all_likes["jams"] ? all_likes["jams"] : "404: User Not Found"
     end
 
     def current_likes
-      self.class.get "/#{self.username}/likes.json?show=current&key=#{API_KEY}"
+      current_likes = self.class.get "/#{self.username}/likes.json?show=current&key=#{API_KEY}"
+      current_likes["jams"] ? current_likes["jams"] : "404: User Not Found"
     end
 
     def past_likes
-      self.class.get "/#{self.username}/likes.json?show=past&key=#{API_KEY}"
+      past_likes = self.class.get "/#{self.username}/likes.json?show=past&key=#{API_KEY}"
+      past_likes["jams"] ? past_likes["jams"] : "404: User Not Found"
     end
   end
 end
