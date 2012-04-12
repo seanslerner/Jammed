@@ -1,4 +1,4 @@
-Given /^I have the username "([^"]*)"$/ do |username|
+Given /^I use the username "([^"]*)"$/ do |username|
   @username = username
 end
 

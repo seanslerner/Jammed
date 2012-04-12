@@ -1,13 +1,16 @@
 require 'spec_helper'
 
 module Jammed
-  describe User do 
+  describe Person do 
+
     let(:person) { Jammed::Person.new('seanslerner') }
+
     describe "#initialize" do
       it "sets the username attribute" do
         person.username.should == "seanslerner"
       end
     end
+
     describe "#profile" do
       it "gets the data from the api" do
         person.profile["name"].should == "seanslerner"
