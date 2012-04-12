@@ -1,4 +1,4 @@
-Feature: jammed retrieves user data
+Feature: jammed retrieves person data
 
   As a jammed-user
   I want to retrieve user data
