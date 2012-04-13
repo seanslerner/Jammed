@@ -11,21 +11,21 @@ module Jammed
       end
     end
 
-    describe "#followers_by_date" do
-      it "order followers by date" do
-        followers.followers('date').should_not be_nil
+    describe "#followers(:order => :date)" do
+      it "can order followers by date" do
+        followers.followers(:order => :date).should_not be_nil
       end
     end
 
-    describe "#followers_by_likes" do
-      it "order followers by likes" do
-        followers.followers('likes').should_not be_nil
+    describe "#followers(:order => :likes)" do
+      it "can order followers by likes" do
+        followers.followers(:order => :likes).should_not be_nil
       end
     end
 
-    describe "#followers_by_alpha" do
-      it "order followers by alpha" do
-        followers.followers('alpha').should_not be_nil
+    describe "#followers(:order => :alpha)" do
+      it "can order followers by alpha" do
+        followers.followers(:order => :alpha).should_not be_nil
       end
     end
   end
