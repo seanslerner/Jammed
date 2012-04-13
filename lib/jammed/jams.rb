@@ -10,20 +10,18 @@ module Jammed
       self.username = username
     end
 
-    def jams
-      jams = self.class.get "/#{self.username}/jams.json?key=#{API_KEY}"
-      jams["jams"] ? jams["jams"] : "404: User Not Found"
-    end
-
-    def past_jams
-      past_jams = self.class.get "/#{self.username}/jams.json?show=past&key=#{API_KEY}"
-      past_jams["jams"] ? past_jams["jams"] : "404: User Not Found"
-    end
-
-    def current_jam
-      jams = self.class.get "/#{self.username}/jams.json?key=#{API_KEY}"
-      return "404: User Not Found" unless jams["jams"]
-      jams["jams"][0].to_s.index("\"current\"=>true") ? jams["jams"][0] : "No Current Jam"
+    def jams(opts={})
+      case(opts[:show])
+      when nil
+        jams = self.class.get "/#{self.username}/jams.json?key=#{API_KEY}"
+        jams["jams"] ? jams["jams"] : "404: User Not Found"
+      when :past
+        jams = self.class.get "/#{self.username}/jams.json?show=past&key=#{API_KEY}"
+        jams["jams"] ? jams["jams"] : "404: User Not Found"
+      when :current
+        jams = self.class.get "/#{self.username}/jams.json?key=#{API_KEY}"
+        jams["jams"][0]['current'] ? jams["jams"][0] : "No Current Jam"
+      end
     end
   end
 end

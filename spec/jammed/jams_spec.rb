@@ -15,25 +15,25 @@ module Jammed
       end
     end
 
-    describe "#past_jams" do
+    describe "#jams(:show => :past)" do
       it "gets past jams from the api" do
-        jam.past_jams.should_not be(nil)
-        jam.past_jams.to_s.should include("\"current\"=>false")
+        jam.jams(:show => :past).should_not be(nil)
+        jam.jams(:show => :past).to_s.should include("\"current\"=>false")
       end
 
       it "doesn't get the current jam" do
-        jam.past_jams.to_s.should_not include("\"current\"=>true")
+        jam.jams(:show => :past).to_s.should_not include("\"current\"=>true")
       end
     end
 
-    describe "#current_jam" do
+    describe "#jams(:show => :current)" do
       it "gets the current jam from the api" do
-        jam.current_jam.should_not be(nil)
-        jam.current_jam.to_s.should include("\"current\"=>true")
+        jam.jams(:show => :current).should_not be(nil)
+        jam.jams(:show => :current).to_s.should include("\"current\"=>true")
       end
 
       it "doesn't get past jams" do
-        jam.current_jam.to_s.should_not include("\"current\"=>false")
+        jam.jams(:show => :current).to_s.should_not include("\"current\"=>false")
       end
     end
   end
