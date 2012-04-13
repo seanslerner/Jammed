@@ -11,21 +11,21 @@ module Jammed
       end
     end
 
-    describe "#following_by_date" do 
-      it "orders followings by date" do
-        followings.following_by_date[-1]["name"].should == "TWHarr"
+    describe "#following(:order => :date)" do 
+      it "can order followings by date" do
+        followings.following(:order => :date)[-1]["name"].should == "TWHarr"
       end
     end
 
-    describe "#following_by_likes" do 
-      it "orders followings by likes" do
-        pending "need to figure out what data to test"
+    describe "#following(:order => :likes)" do 
+      it "can order followings by likes" do
+        followings.following(:order => :likes).should_not be_nil
       end
     end
 
-    describe "#following_by_alpha" do
-      it "orders followings by alpha" do
-        followings.following_by_alpha[-1]["name"].should == "TWHarr"
+    describe "#following(:order => :alpha)" do
+      it "can order followings by alpha" do
+        followings.following(:order => :alpha)[-1]["name"].should == "TWHarr"
       end
     end 
   end

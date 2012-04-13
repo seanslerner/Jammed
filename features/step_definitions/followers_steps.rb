@@ -15,6 +15,7 @@ Then /^I should see their followers ordered by "([^"]*)"$/ do |order|
   when "date"
     @followers[-1].to_s.should include('TWHarr')
   when "likes"
+    @followers.should_not be_nil
   when "alpha"
     @followers[-1].to_s.should include('TWHarr')
   end
