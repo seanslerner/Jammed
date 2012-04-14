@@ -28,5 +28,12 @@ module Jammed
         followings.following(:order => :alpha)[-1]["name"].should == "TWHarr"
       end
     end 
+
+    context "#following with bad :order value" do
+      it "complains when non-existant :order value given" do
+        message = "Cannot order Followings by bad"
+        followings.following(:order => :bad).should == message
+      end
+    end
   end
 end
