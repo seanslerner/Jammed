@@ -20,6 +20,8 @@ module Jammed
         followers = self.class.get "/#{self.username}/followers.json?order=likes&key=#{API_KEY}"
       when :alpha
         followers = self.class.get "/#{self.username}/followers.json?order=alpha&key=#{API_KEY}"
+      else
+        return "Cannot order Followers by #{opts[:order]}"
       end
       followers["people"] ? followers["people"] : "404 Not Found" 
     end

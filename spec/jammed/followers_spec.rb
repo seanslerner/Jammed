@@ -28,5 +28,12 @@ module Jammed
         followers.followers(:order => :alpha).should_not be_nil
       end
     end
+
+    context "#followers with bad :order value" do
+      it "complains when non-existant :order value given" do
+        message = "Cannot order Followers by bad"
+        followers.followers(:order => :bad).should == message
+      end
+    end
   end
 end
