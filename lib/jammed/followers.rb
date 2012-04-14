@@ -16,8 +16,8 @@ module Jammed
         followers = self.class.get "/#{self.username}/followers.json?key=#{API_KEY}"
       when :date
         followers = self.class.get "/#{self.username}/followers.json?order=when&key=#{API_KEY}"
-      when :likes
-        followers = self.class.get "/#{self.username}/followers.json?order=likes&key=#{API_KEY}"
+      when :affinity
+        followers = self.class.get "/#{self.username}/followers.json?order=affinity&key=#{API_KEY}"
       when :alpha
         followers = self.class.get "/#{self.username}/followers.json?order=alpha&key=#{API_KEY}"
       else
