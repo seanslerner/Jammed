@@ -9,9 +9,9 @@ When /^I get their "([^"]*)"$/ do |request|
   when "jams"
     @jams = Jammed::Jams.new(@username).jams
   when "past jams"
-    @jams = Jammed::Jams.new(@username).past_jams
+    @jams = Jammed::Jams.new(@username).jams(:show => :past)
   when "current jam"
-    @jam = Jammed::Jams.new(@username).current_jam
+    @jam = Jammed::Jams.new(@username).jams(:show => :current)
   end
 end
 
