@@ -3,32 +3,37 @@ require 'spec_helper'
 module Jammed
   describe Person do 
 
-    let(:person) { Jammed::Person.new('seanslerner') }
+    let(:person) { Jammed::Person.new('IFTFOM') }
 
     describe "#initialize" do
       it "sets the username attribute" do
-        person.username.should == "seanslerner"
+        person.username.should == "IFTFOM"
       end
     end
 
     describe "#profile" do
+      
+      before do
+        serve_response("http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", :person)
+      end
+      
       it "gets the data from the api" do
-        person.profile["name"].should == "seanslerner"
+        person.profile["name"].should == "IFTFOM"
       end
 
       it "parses the JSON return into a hash" do
         person.profile.should be_an_instance_of Hash
       end
-
-      it "returns a 404 if unkown username used" do
-        bad_person = Jammed::Person.new('ThisUserNameShouldNeverExist')
-        bad_person.profile.should == "404: User Not Found"
-      end
     end
 
     describe "dynamic attribute" do
+      
+      before do
+        serve_response("http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", :person)
+      end
+      
       it "returns the attribute value if present in profile" do
-        person.name.should == "seanslerner"
+        person.name.should == "IFTFOM"
       end
 
       it "raises method missing if attribute is not present" do
