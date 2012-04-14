@@ -1,5 +1,7 @@
 When /^I get the users they follow$/ do
-  @followings = Jammed::Following.new(@username).following
+  followings = Jammed::Following.new(@username)
+  serve_response("http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92", :following)
+  @followings = followings.following
 end
 
 Then /^I should see the users they follow$/ do
