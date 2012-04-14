@@ -12,6 +12,11 @@ module Jammed
     end
     
     describe "#people" do
+      
+      before do
+        serve_response("http://api.thisismyjam.com/1/suggestedPeople.json?key=987bcab01b929eb2c07877b224215c92", :suggested_people)
+      end
+      
       it "parses the JSON return into a hash" do
         suggested_people.people.should be_an_instance_of Hash
       end
