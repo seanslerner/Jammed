@@ -2,9 +2,13 @@ require 'spec_helper'
 
 module Jammed
   describe Jams do
-    let(:jam) { Jammed::Jams.new('seanslerner') }
+    let(:jam) { Jammed::Jams.new('IFTFOM') }
 
     describe "#jams" do
+      before do
+        serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92", :jams)
+      end
+      
       it "gets jams from the api" do
         jam.jams.should_not be(nil)
       end
@@ -16,6 +20,10 @@ module Jammed
     end
 
     describe "#past_jams" do
+      before do
+        serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92&show=past", :jams_past)
+      end
+      
       it "gets past jams from the api" do
         jam.past_jams.should_not be(nil)
         jam.past_jams.to_s.should include("\"current\"=>false")
@@ -27,6 +35,10 @@ module Jammed
     end
 
     describe "#current_jam" do
+      before do
+        serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92", :jams)
+      end
+      
       it "gets the current jam from the api" do
         jam.current_jam.should_not be(nil)
         jam.current_jam.to_s.should include("\"current\"=>true")
