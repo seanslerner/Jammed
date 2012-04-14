@@ -5,7 +5,7 @@ Feature: jammed retrieves users following a user
   So that I can see who follows them?
 
   Background:
-    Given I use the username "seanslerner"
+    Given I use the username "IFTOM"
 
   Scenario: get all followers
     When I get their followers
@@ -15,9 +15,9 @@ Feature: jammed retrieves users following a user
     When I get their followers ordered by "date"
     Then I should see their followers ordered by "date"
 
-  Scenario: get followers ordered by likes
-    When I get their followers ordered by "likes"
-    Then I should see their followers ordered by "likes"
+  Scenario: get followers ordered by affinity
+    When I get their followers ordered by "affinity"
+    Then I should see their followers ordered by "affinity"
 
   Scenario: get followers ordered alphabetically
     When I get their followers ordered by "alpha"
