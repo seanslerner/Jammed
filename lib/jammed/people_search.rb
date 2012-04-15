@@ -1,3 +1,5 @@
+require 'uri'
+
 module Jammed
 
   class Search
@@ -18,8 +20,9 @@ module Jammed
     end
 
     def self.search_track(artist, track)
-      search = Search.get "/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{API_KEY}"
-      search["people"][0] ? search["people"] : "No tracks found"
+      uri = URI.escape("/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{API_KEY}", '|')
+      search = Search.get uri   
+      search["people"][0] ? search["people"] : "No tracks found"  
     end
 
   end
