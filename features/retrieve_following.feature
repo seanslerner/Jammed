@@ -15,9 +15,9 @@ Feature: jammed retrieves users followed by a user
     When I get the users they follow by "date"
     Then I should see the users they follow ordered by "date"
 
-  Scenario: getting all followed users ordered by likes
-    When I get the users they follow by "likes"
-    Then I should see the users they follow ordered by "likes"
+  Scenario: getting all followed users ordered by affinity
+    When I get the users they follow by "affinity"
+    Then I should see the users they follow ordered by "affinity"
 
   Scenario: getting all followed users ordered alphabetically 
     When I get the users they follow by "alpha"

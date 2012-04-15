@@ -5,12 +5,12 @@ Feature: jammed retrieves person data
   So that I can extract specific information
 
   Scenario: retrieving all user data
-    Given I use the username "seanslerner"
+    Given I use the username "IFTFOM"
     When I call the api for "profile"
     Then I should receive all the user info
 
   Scenario: retrieving just the user's name
-    Given I use the username "seanslerner"
+    Given I use the username "IFTFOM"
     When I call the api for "name"
     Then I should recieve the name
     But I should not recieve anything else
@@ -19,4 +19,3 @@ Feature: jammed retrieves person data
     Given I use the username "ThisUserNameShouldNeverExist"
     When I call the api for "profile"
     Then I should recieve an error
-    But I should not recieve anything else

@@ -3,12 +3,16 @@ require 'webmock/rspec'
 
 SAMPLE_RESPONSES_DIR = "sample_responses"
 
-def serve_response(path, response_file_name)
+def serve_response(path, file_name)
   begin
-    response_body = File.open(File.dirname(__FILE__) + "/#{SAMPLE_RESPONSES_DIR}/#{response_file_name.to_s}.json") {|io| io.read}
+    response_body = File.binread(
+                      File.dirname(__FILE__) +
+                      "/#{SAMPLE_RESPONSES_DIR}/#{file_name.to_s}.json")
   rescue
-    raise "Unable to find file [#{response_file_name}.json]"
+    raise "Unable to read file [#{file_name}.json]"
   end
   
-  stub_request(:get, path).to_return(:status => 200, :body => response_body, :headers => {:content_type => 'application/json'})
+  stub_request(:get, path)
+    .to_return(:status => 200, :body => response_body,
+                               :headers => {:content_type => 'application/json'})
 end

@@ -1,17 +1,25 @@
 When /^I get their "([^"]*)"$/ do |request|
+  jam = Jammed::Jams.new('IFTFOM')
+  like = Jammed::Likes.new('IFTFOM')
   case(request)
   when "likes"
-    @likes = Jammed::Likes.new(@username).likes
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/likes.json?key=987bcab01b929eb2c07877b224215c92", :likes)
+    @likes = like.likes
   when "current likes"
-    @likes = Jammed::Likes.new(@username).current_likes
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/likes.json?show=current&key=987bcab01b929eb2c07877b224215c92", :likes_current)
+    @likes = like.current_likes
   when "past likes"
-    @likes = Jammed::Likes.new(@username).past_likes
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/likes.json?show=past&key=987bcab01b929eb2c07877b224215c92", :likes_past)
+    @likes = like.past_likes
   when "jams"
-    @jams = Jammed::Jams.new(@username).jams
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92", :jams)
+    @jams = jam.jams
   when "past jams"
-    @jams = Jammed::Jams.new(@username).jams(:show => :past)
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92&show=past", :jams_past)
+    @jams = jam.jams(:show => :past)
   when "current jam"
-    @jam = Jammed::Jams.new(@username).jams(:show => :current)
+    serve_response("http://api.thisismyjam.com/1/IFTFOM/jams.json?key=987bcab01b929eb2c07877b224215c92", :jams)
+    @jam = jam.jams(:show => :current)
   end
 end
 
