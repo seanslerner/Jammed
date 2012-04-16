@@ -26,7 +26,11 @@ module Jammed
       
       it "returns the attribute value if present in profile" do
         pending "Jammed::Person has a method #name inherited from Module causing this to fail. Needs workaround."
-        Jammed::Person.name(:username => 'IFTFOM').should == "IFTFOM"
+        Jammed::Person.name({:username => 'IFTFOM'}).should == "IFTFOM"
+      end
+
+      it "returns the attribute value if present in profile" do
+        Jammed::Person.fullname({:username => 'IFTFOM'}).should match /Institute/
       end
 
       it "raises method missing if attribute is not present" do
