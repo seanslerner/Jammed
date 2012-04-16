@@ -4,8 +4,8 @@ require File.expand_path('../lib/jammed/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Sean Lerner", "Rob Young", "Mike Chlipala"]
   gem.email         = ["seanslerner@gmail.com"]
-  gem.description   = %q{A ruby wrapper for This Is My Jam's API}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Jammed wraps the This Is My Jam API. More information about the This Is My Jam API can be found on their website (http://www.thisismyjam.com/developers).}
+  gem.summary       = %q{A Ruby wrapper for This Is My Jam's API}
   gem.homepage      = "https://github.com/seanslerner/Jammed"
 
   gem.files         = `git ls-files`.split($\)

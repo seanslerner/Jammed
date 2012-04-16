@@ -1,7 +1,5 @@
 #Jammed
-##A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
-
-TODO: Write good description of Jammed
+###A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
 
 ## Installation
 
@@ -24,7 +22,7 @@ TODO: Write usage instructions here
 ## Links
 
 * [This Is My Jam](http://www.thisismyjam.com/)
-* [This Is My Jam API Documentation](http://www.thisismyjam.com/developers/beta)
+* [This Is My Jam API Documentation](http://www.thisismyjam.com/developers)
 * [This Is My Jam API Google Group](https://groups.google.com/forum/?fromgroups#!forum/thisismyapi)
 
 ## Contributing
