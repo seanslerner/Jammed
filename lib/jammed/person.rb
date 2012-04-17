@@ -11,6 +11,10 @@ module Jammed
       profile["person"] ? profile["person"] : "404: User Not Found"
     end
 
+    def self.name(opts={})
+      self.profile(opts)['name']
+    end
+
     def self.method_missing(name, *args, &block)
       self.profile(args[0]).has_key?(name.to_s) ? self.profile(args[0])[name.to_s] : super
     end

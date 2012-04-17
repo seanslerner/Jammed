@@ -3,11 +3,11 @@ require 'spec_helper'
 module Jammed
   describe Person do 
 
+    before do
+      serve_response("http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", :person)
+    end
+
     describe ".profile" do
-      
-      before do
-        serve_response("http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", :person)
-      end
       
       it "gets the data from the api" do
         Jammed::Person.profile(:username => 'IFTFOM')["name"].should == "IFTFOM"
@@ -20,12 +20,7 @@ module Jammed
 
     describe "dynamic attribute" do
       
-      before do
-        serve_response("http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", :person)
-      end
-      
       it "returns the attribute value if present in profile" do
-        pending "Jammed::Person has a method #name inherited from Module causing this to fail. Needs workaround."
         Jammed::Person.name({:username => 'IFTFOM'}).should == "IFTFOM"
       end
 
