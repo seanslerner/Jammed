@@ -59,5 +59,11 @@ module Jammed
         lambda { user.foo_attribute }.should raise_error NoMethodError
       end
     end
+
+    describe "#js_namify" do 
+      it "turns a snake_case string into a javaScriptStyled string" do
+        user.js_namify('joined_date').should == 'joinedDate'
+      end
+    end
   end
 end
