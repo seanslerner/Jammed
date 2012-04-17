@@ -18,7 +18,7 @@ module Jammed
       end
     end
 
-    describe "dynamic attribute" do
+    describe "dynamic attributes (.method_missing)" do
       
       it "returns the attribute value if present in profile" do
         Jammed::Person.name({:username => 'IFTFOM'}).should == "IFTFOM"

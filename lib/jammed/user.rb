@@ -1,9 +1,41 @@
 module Jammed
   class User
-    attr_accessor :username, :profile
+    attr_accessor :username, :followers, :following, :jams, :likes, :profile
 
     def initialize(username)
       @username = username
+    end
+
+    def followers(opts={})
+      @followers ||= Jammed::Followers.followers(@username, opts)
+    end
+
+    def followers!(opts={})
+      @followers = Jammed::Followers.followers(@username, opts)
+    end
+
+    def following(opts={})
+      @following ||= Jammed::Following.following(@username, opts)
+    end
+
+    def following!(opts={})
+      @following = Jammed::Following.following(@username, opts)
+    end
+
+    def jams(opts={})
+      @jams ||= Jammed::Jams.jams(@username, opts)
+    end
+
+    def jams!(opts={})
+      @jams = Jammed::Jams.jams(@username, opts)
+    end
+
+    def likes(opts={})
+      @likes ||= Jammed::Likes.likes(@username, opts)
+    end
+
+    def likes!(opts={})
+      @likes = Jammed::Likes.likes(@username, opts)
     end
     
     def profile
