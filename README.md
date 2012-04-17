@@ -19,6 +19,20 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+#### People Search
+
+Returns people with the search string in their username, full name or Twitter name:
+
+    $ Jammed::PeopleSearch.search_name('institute')
+
+Returns people who have posted tracks by artists:
+
+    $ Jammed::PeopleSearch.search_artist('beach boys')
+
+Returns people who have posted a particular track (strict, case-insensitive matching).
+
+    $ Jammed::PeopleSearch.search_track('Lana del Rey', 'Video games')
+
 ## Links
 
 * [This Is My Jam](http://www.thisismyjam.com/)
