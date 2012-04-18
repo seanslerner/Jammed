@@ -1,7 +1,48 @@
 #Jammed
-##A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
+###A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
 
-This is a work in progress. The API itself is a work in progress, so things may break unexpectedly.
+## Installation
 
-###Todo
-See issues for what needs doing!
+Add this line to your application's Gemfile:
+
+    gem 'jammed'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install jammed
+
+## Usage
+
+TODO: Write usage instructions here
+
+#### People Search
+
+Returns people with the search string in their username, full name or Twitter name:
+
+    $ Jammed::PeopleSearch.search_name('institute')
+
+Returns people who have posted tracks by artists:
+
+    $ Jammed::PeopleSearch.search_artist('beach boys')
+
+Returns people who have posted a particular track (strict, case-insensitive matching).
+
+    $ Jammed::PeopleSearch.search_track('Lana del Rey', 'Video games')
+
+## Links
+
+* [This Is My Jam](http://www.thisismyjam.com/)
+* [This Is My Jam API Documentation](http://www.thisismyjam.com/developers)
+* [This Is My Jam API Google Group](https://groups.google.com/forum/?fromgroups#!forum/thisismyapi)
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
