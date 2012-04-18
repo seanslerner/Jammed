@@ -10,11 +10,11 @@ module Jammed
       when nil
         followers = Search.get "/#{username}/followers.json?key=#{API_KEY}"
       when :date
-        followers = Search.get "/#{username}/followers.json?order=when&key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?order=followedDate&key=#{API_KEY}"
       when :affinity
         followers = Search.get "/#{username}/followers.json?order=affinity&key=#{API_KEY}"
       when :alpha
-        followers = Search.get "/#{username}/followers.json?order=alpha&key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?order=name&key=#{API_KEY}"
       else
         return "Cannot order Followers by #{opts[:order]}"
       end
