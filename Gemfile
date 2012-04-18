@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem "httparty"
+gem "httparty", ">= 0.8.2"
 
 group :development do
-  gem "rake"
-  gem "jeweler"
-  gem "rspec"
-  gem "webmock"
+  gem "rake", ">= 0.8.7"
+  gem "jeweler", ">= 1.8.3"
+  gem "rspec", ">= 2.9.0"
+  gem "webmock", ">= 1.8.6"
 end
