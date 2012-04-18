@@ -1,12 +1,12 @@
 require 'uri'
 
-module Jammed
+module Jammed #:nodoc:
 
-  class Search
+  class Search #:nodoc:
     include HTTParty
     base_uri 'http://api.thisismyjam.com/1'
   end
-
+  
   class PeopleSearch
 
     def self.search_name(name)

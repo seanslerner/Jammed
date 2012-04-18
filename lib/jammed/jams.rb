@@ -1,10 +1,26 @@
-module Jammed
+module Jammed #:nodoc:
+  # Provides methods for calling API endpoint /jams.json?
   class Jams
-    class Search
+    class Search #:nodoc:
       include HTTParty
       base_uri 'http://api.thisismyjam.com/1'
     end
 
+    # Calls API for user specific data concerning jams
+    #
+    # ==== Attributes
+    #
+    # * +username+ - The username of the user whose followings you want to retrieve
+    # * +opts+ - Options for which data is shown
+    #
+    # ==== Options
+    #
+    # * +:show+ - A symbol determining what data is shown like :past or :current
+    #
+    # ==== Examples
+    #
+    #     Jammed::Jams.jams('IFTFOM') #returns all jams
+    #     Jammed::Jams.jams('IFTFOM', :show => :past) # returns only past jams
     def self.jams(username, opts={})
       case(opts[:show])
       when nil

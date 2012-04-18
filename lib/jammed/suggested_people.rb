@@ -1,7 +1,7 @@
-module Jammed
+module Jammed #:nodoc:
   class SuggestedPeople
     
-    class Search
+    class Search #:nodoc:
       include HTTParty
       base_uri 'http://api.thisismyjam.com/1'
     end

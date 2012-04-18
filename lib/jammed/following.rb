@@ -1,10 +1,26 @@
-module Jammed
+module Jammed #:nodoc:
+  # Provides methods for calling API endpoint /following.json?
   class Following
-    class Search
+    class Search #:nodoc:
       include HTTParty
       base_uri 'http://api.thisismyjam.com/1'
     end
 
+    # Calls API for user specific data concerning who the user is following
+    #
+    # ==== Attributes
+    #
+    # * +username+ - The username of the user whose followings you want to retrieve
+    # * +opts+ - Options for ordering the data
+    #
+    # ==== Options
+    #
+    # * +:order+ - A symbol determining how the data is orderd like :date, :affinity, or :alpha
+    #
+    # ==== Examples
+    #
+    #     Jammed::Following.following('IFTFOM') #returns followings unorderd
+    #     Jammed::Following.following('IFTFOM', :order => :date) # returns followings ordered by date
     def self.following(username, opts={})
       case(opts[:order])
       when nil
