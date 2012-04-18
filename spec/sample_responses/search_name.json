@@ -1,1 +1,55 @@
-{"people":[{"name":"IFTFOM","fullname":"Institute for the Future of Music","avatarNormal":"http:\/\/static03.thisismyjam.com\/i\/avtr_ffb74c754f2e74d43ba3e77aa46c3e1a_128.jpg","avatarSmall":"http:\/\/static01.thisismyjam.com\/i\/avtr_ffb74c754f2e74d43ba3e77aa46c3e1a_small.jpg","bio":"Between the park and the canal. Improving your music life with science and heart. We like coldwave, yacht rock, the future, and you.","followersCount":1483,"followers":"http:\/\/api.thisismyjam.com\/1\/IFTFOM\/followers.json?key=987bcab01b929eb2c07877b224215c92","followingCount":707,"following":"http:\/\/api.thisismyjam.com\/1\/IFTFOM\/following.json?key=987bcab01b929eb2c07877b224215c92","jamCount":33,"hasCurrentJam":true,"joinedDate":"Fri, 26 Aug 2011 16:15:19 +0000","representativeArtists":["Art Of Noise","Fausto Papetti","Sachal Studios Orchestra","Steely Dan"],"url":"http:\/\/www.thisismyjam.com\/IFTFOM","apiUrl":"http:\/\/api.thisismyjam.com\/1\/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92","twitterName":"IFTFOM","lastfmName":"IFTFOM"},{"name":"LasVegasWI","fullname":"Las Vegas Women's Institute","avatarNormal":"http:\/\/static02.thisismyjam.com\/i\/avtr_0483bbc75be708a96783d1ea53c1fe24_128.jpg","avatarSmall":"http:\/\/static01.thisismyjam.com\/i\/avtr_0483bbc75be708a96783d1ea53c1fe24_small.jpg","bio":"Playing records and drinking. Both to a relatively high standard\r\n\r\n@LasVegasWI\r\nfacebook.com\/lasvegaswomensinstitute","followersCount":1,"followers":"http:\/\/api.thisismyjam.com\/1\/LasVegasWI\/followers.json?key=987bcab01b929eb2c07877b224215c92","followingCount":15,"following":"http:\/\/api.thisismyjam.com\/1\/LasVegasWI\/following.json?key=987bcab01b929eb2c07877b224215c92","jamCount":8,"hasCurrentJam":false,"joinedDate":"Wed, 22 Feb 2012 09:52:06 +0000","representativeArtists":["LCD Soundsystem","Roy Ayers","Madness","Joe Smooth"],"url":"http:\/\/www.thisismyjam.com\/LasVegasWI","apiUrl":"http:\/\/api.thisismyjam.com\/1\/LasVegasWI.json?key=987bcab01b929eb2c07877b224215c92","twitterName":"LasVegasWI"}],"list":{"next":null,"hasMore":false}}
+{
+    "list": {
+        "hasMore": false, 
+        "next": null
+    }, 
+    "people": [
+        {
+            "apiUrl": "http://api.thisismyjam.com/1/IFTFOM.json?key=987bcab01b929eb2c07877b224215c92", 
+            "avatarNormal": "http://static01.thisismyjam.com/i/avtr_ffb74c754f2e74d43ba3e77aa46c3e1a_128.jpg", 
+            "avatarSmall": "http://static02.thisismyjam.com/i/avtr_ffb74c754f2e74d43ba3e77aa46c3e1a_small.jpg", 
+            "bio": "Between the park and the canal. Improving your music life with science and heart. We like coldwave, yacht rock, the future, and you.", 
+            "followers": "http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92", 
+            "followersCount": 1547, 
+            "following": "http://api.thisismyjam.com/1/IFTFOM/following.json?key=987bcab01b929eb2c07877b224215c92", 
+            "followingCount": 718, 
+            "fullname": "Institute for the Future of Music", 
+            "hasCurrentJam": true, 
+            "jamCount": 34, 
+            "joinedDate": "Fri, 26 Aug 2011 16:15:19 +0000", 
+            "lastfmName": "IFTFOM", 
+            "name": "IFTFOM", 
+            "representativeArtists": [
+                "Earth Wind And Fire", 
+                "Sachal Studios Orchestra", 
+                "Fausto Papetti", 
+                "The Fatback Band"
+            ], 
+            "twitterName": "IFTFOM", 
+            "url": "http://www.thisismyjam.com/IFTFOM"
+        }, 
+        {
+            "apiUrl": "http://api.thisismyjam.com/1/LasVegasWI.json?key=987bcab01b929eb2c07877b224215c92", 
+            "avatarNormal": "http://static03.thisismyjam.com/i/avtr_0483bbc75be708a96783d1ea53c1fe24_128.jpg", 
+            "avatarSmall": "http://static03.thisismyjam.com/i/avtr_0483bbc75be708a96783d1ea53c1fe24_small.jpg", 
+            "bio": "Playing records and drinking. Both to a relatively high standard\r\n\r\n@LasVegasWI\r\nfacebook.com/lasvegaswomensinstitute", 
+            "followers": "http://api.thisismyjam.com/1/LasVegasWI/followers.json?key=987bcab01b929eb2c07877b224215c92", 
+            "followersCount": 1, 
+            "following": "http://api.thisismyjam.com/1/LasVegasWI/following.json?key=987bcab01b929eb2c07877b224215c92", 
+            "followingCount": 15, 
+            "fullname": "Las Vegas Women's Institute", 
+            "hasCurrentJam": false, 
+            "jamCount": 8, 
+            "joinedDate": "Wed, 22 Feb 2012 09:52:06 +0000", 
+            "name": "LasVegasWI", 
+            "representativeArtists": [
+                "Ten City", 
+                "LCD Soundsystem", 
+                "Roy Ayers", 
+                "Madness"
+            ], 
+            "twitterName": "LasVegasWI", 
+            "url": "http://www.thisismyjam.com/LasVegasWI"
+        }
+    ]
+}

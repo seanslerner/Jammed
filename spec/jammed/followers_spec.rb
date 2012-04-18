@@ -15,7 +15,7 @@ module Jammed
 
     describe ".followers(:order => :date)" do
       before do
-        serve_response("http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92&order=when", :followers_when)
+        serve_response("http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92&order=followedDate", :followers_date)
       end
       
       it "can order followers by date" do
@@ -33,13 +33,13 @@ module Jammed
       end
     end
 
-    describe ".followers(:order => :alpha)" do
+    describe ".followers(:order => :name)" do
       before do
-        serve_response("http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92&order=alpha", :followers_alpha)
+        serve_response("http://api.thisismyjam.com/1/IFTFOM/followers.json?key=987bcab01b929eb2c07877b224215c92&order=name", :followers_name)
       end
       
-      it "can order followers by alpha" do
-        Jammed::Followers.followers('IFTFOM', :order => :alpha).should_not be_nil
+      it "can order followers by name" do
+        Jammed::Followers.followers('IFTFOM', :order => :name).should_not be_nil
       end
     end
 
