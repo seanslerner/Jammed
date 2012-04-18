@@ -1,9 +1,19 @@
 module Jammed #:nodoc:
   # Provides User objects for interacting with user-specific data
   class User
-
+    
+    # Each attr_accessor (except for :username) caches API data on first use in corresponding instance variable
     attr_accessor :username, :followers, :following, :jams, :likes, :profile
 
+    # Creates a new Jammed::User object and assigns a username to @username
+    #
+    # ==== Attributes
+    #
+    # * +username+ - Username of user to make API calls with
+    #
+    # ==== Examples
+    #
+    #       iftfom = Jammed::User.new('IFTFOM')
     def initialize(username)
       @username = username
     end

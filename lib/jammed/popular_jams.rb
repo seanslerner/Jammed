@@ -1,5 +1,5 @@
 module Jammed #:nodoc:
-  # Provides methods for calling API endpoint /popular.json?
+  # Provides method for calling API endpoint /popular.json?
   class PopularJams
 
     class Search #:nodoc:
