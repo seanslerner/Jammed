@@ -17,8 +17,6 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
 #### People Search
 
 Returns people with the search string in their username, full name or Twitter name:
@@ -32,6 +30,41 @@ Returns people who have posted tracks by artists:
 Returns people who have posted a particular track (strict, case-insensitive matching).
 
     $ Jammed::PeopleSearch.search_track('Lana del Rey', 'Video games')
+
+#### Popular Jams
+
+Returns random sample (20 out of 40) of popular jams over the past 48 hours:
+
+    $ Jammed::PopularJams.popular_jams
+
+#### Suggested People
+
+Returns list of suggested users:
+
+    $ Jammed::SuggestedPeople.people
+
+#### User
+
+Provides methods to interact with user specific data through Jammed::User objects:
+
+    user = Jammed::User.new('IFTFOM')
+    user.profile
+      # caches and returns API call to /IFTFOM.json?
+    user.name
+      # returns the attribute value if present in profile ('IFTFOM')
+    user.followers(:order => :date)
+      # caches and returns API call to /followers.json?order=date
+    user.followers!
+      # clears cache and returns API call to /followers.json
+
+See source for all Jammed::User instance methods.
+
+The user specific API calls can also be called directly:
+
+    $ Jammed::Person.profile(:username => 'IFTFOM')
+      #same as user.profile above
+    $ Jammed::Followers.followers('IFTFOM', :order => :date)
+      #same as user.followers(:order => :date) above
 
 ## Links
 
