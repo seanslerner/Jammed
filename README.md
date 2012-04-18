@@ -1,6 +1,8 @@
 #Jammed
 ###A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
 
+Note: The API for This Is My Jam is stil in beta, so if you'd like to use it please email the Jam team at api@thisismyjam.com to get on their mailing list.
+
 ## Installation
 
 Add this line to your application's Gemfile:
