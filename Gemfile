@@ -1,3 +1,10 @@
 source 'https://rubygems.org'
 
-gemspec
+gem "httparty"
+
+group :development do
+  gem "rake"
+  gem "jeweler"
+  gem "rspec"
+  gem "webmock"
+end
