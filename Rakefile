@@ -10,7 +10,7 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
-require_relative "lib/jammed/version"
+require File.expand_path('../lib/jammed/version', __FILE__)
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   gem.name          = "jammed"
