@@ -15,7 +15,7 @@ module Jammed
     # ==== Examples
     #
     #     jammed = Jammed.new('987bcab01b929eb2c07877b224215c92')
-    def new(api_key, opts={})
+    def new(api_key='987bcab01b929eb2c07877b224215c92', opts={})
       Jammed::Base.new(api_key, opts)
     end
   end
