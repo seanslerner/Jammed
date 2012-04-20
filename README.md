@@ -19,6 +19,8 @@ Or install it yourself as:
 
 ## Usage
 
+Note: Right now, since the API is in beta, `Jammed.new` can be called without supplying an API key (it defaults to the beta key). Once individual dev keys are available this will change.
+
 ```ruby
 require 'jammed'
 
