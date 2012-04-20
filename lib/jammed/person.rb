@@ -1,12 +1,6 @@
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /username.json? and accessing user specific data
   class Person
-
-    class Search #:nodoc:
-      include HTTParty
-      base_uri 'http://api.thisismyjam.com/1'
-    end
-
     # Calls API for a specific user's profile
     #
     # ==== Examples

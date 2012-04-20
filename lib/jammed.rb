@@ -4,6 +4,12 @@ Dir[File.dirname(__FILE__) + '/jammed/*.rb'].each do |file|
 end
 
 module Jammed
+
+  class Search #:nodoc:
+    include HTTParty
+    base_uri 'http://api.thisismyjam.com/1'
+  end
+  
   class << self
     #Creates a Jammed::Base object for interacting with the API
     #
