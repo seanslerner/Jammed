@@ -1,4 +1,5 @@
-#Jammed [![Build Status](https://secure.travis-ci.org/seanslerner/Jammed.png?branch=master)](http://travis-ci.org/seanslerner/Jammed)
+#Jammed [![Build History][2]][1] [![Dependency Status][4]][3]
+
 ###A Ruby API wrapper for [This Is My Jam](http://www.thisismyjam.com/).
 
 Note: The API for This Is My Jam is stil in beta, so if you'd like to use it please email the Jam team at api@thisismyjam.com to get on their mailing list.
@@ -52,3 +53,8 @@ Also, pagination is not supported at the moment. So, at most you will get the fi
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[1]: http://travis-ci.org/seanslerner/Jammed
+[2]: https://secure.travis-ci.org/seanslerner/Jammed.png?branch=master
+[3]: https://gemnasium.com/seanslerner/jammed
+[4]: https://gemnasium.com/seanslerner/Jammed.png
