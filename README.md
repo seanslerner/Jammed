@@ -19,54 +19,20 @@ Or install it yourself as:
 
 ## Usage
 
-#### People Search
+```ruby
+require 'jammed'
 
-Returns people with the search string in their username, full name or Twitter name:
+jammed = Jammed.new('987bcab01b929eb2c07877b224215c92')
 
-    $ Jammed::PeopleSearch.search_name('institute')
+pop_jams = jammed.popular_jams
 
-Returns people who have posted tracks by artists:
+iftfom_profile = jammed.profile('IFTFOM')
+iftfom_liks = jammed.likes('IFTFOM', :show => :current)
 
-    $ Jammed::PeopleSearch.search_artist('beach boys')
-
-Returns people who have posted a particular track (strict, case-insensitive matching).
-
-    $ Jammed::PeopleSearch.search_track('Lana del Rey', 'Video games')
-
-#### Popular Jams
-
-Returns random sample (20 out of 40) of popular jams over the past 48 hours:
-
-    $ Jammed::PopularJams.popular_jams
-
-#### Suggested People
-
-Returns list of suggested users:
-
-    $ Jammed::SuggestedPeople.people
-
-#### User
-
-Provides methods to interact with user specific data through Jammed::User objects:
-
-    user = Jammed::User.new('IFTFOM')
-    user.profile
-      # caches and returns API call to /IFTFOM.json?
-    user.name
-      # returns the attribute value if present in profile ('IFTFOM')
-    user.followers(:order => :date)
-      # caches and returns API call to /followers.json?order=date
-    user.followers!
-      # clears cache and returns API call to /followers.json
-
-See source for all Jammed::User instance methods.
-
-The user specific API calls can also be called directly:
-
-    $ Jammed::Person.profile(:username => 'IFTFOM')
-      #same as user.profile above
-    $ Jammed::Followers.followers('IFTFOM', :order => :date)
-      #same as user.followers(:order => :date) above
+iftfom = jammed.user('IFTFOM')
+iftfom.profile # same as jammed.profile('IFTFOM')
+iftfom.likes(:show => :current) # same as jammed.likes('IFTFOM', :show => :current)
+```
 
 ## Links
 
