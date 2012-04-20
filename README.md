@@ -29,12 +29,15 @@ jammed = Jammed.new('987bcab01b929eb2c07877b224215c92')
 pop_jams = jammed.popular_jams
 
 iftfom_profile = jammed.profile('IFTFOM')
-iftfom_liks = jammed.likes('IFTFOM', :show => :current)
+iftfom_likes = jammed.likes('IFTFOM', :show => :current)
 
 iftfom = jammed.user('IFTFOM')
 iftfom.profile # same as jammed.profile('IFTFOM')
 iftfom.likes(:show => :current) # same as jammed.likes('IFTFOM', :show => :current)
+iftfom.likes! #resets cached likes and return all of IFTFOM's like
 ```
+
+Also, pagination is not supported at the moment. So, at most you will get the first 60 results for any API call that returns a list. Automatically handling pagination is a first priority for the next release.
 
 ## Links
 

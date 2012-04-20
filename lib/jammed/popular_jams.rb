@@ -13,7 +13,8 @@ module Jammed #:nodoc:
     #
     #     Jammed::PopularJams.popular_jams('08972935872035') #returns a sample of popular jams
     def self.popular_jams(api_key)
-      Search.get "/popular.json?key=#{api_key}"
+      search = Search.get "/popular.json?key=#{api_key}"
+      search['jams'] ? search['jams'] : "404 Not Found"
     end
   end
 end
