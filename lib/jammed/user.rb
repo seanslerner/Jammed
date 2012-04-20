@@ -35,7 +35,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.followers #returns all followers of IFTFOM
     #     user.followers(:order => :date) #reutrns IFTFOM's followers ordered by date
     def followers!(opts={})
@@ -58,7 +58,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.following #returns all followings of IFTFOM
     #     user.following(:order => :date) #returns IFTFOM's followings ordered by date
     def following!(opts={})
@@ -81,7 +81,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.jams #returns all jams of IFTFOM
     #     user.jams(:show => :past) #returns IFTFOM's past jams
     def jams!(opts={})
@@ -104,7 +104,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.likes #returns all likes of IFTFOM
     #     user.likes(:show => :past) #returns IFTFOM's past likes
     def likes!(opts={})
@@ -119,7 +119,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.profile #returns entire profile of IFTFOM
     def profile!
       @profile = Jammed::Person.profile(@username, @api_key)
@@ -129,7 +129,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     user = Jammed::User.new('IFTFOM')
+    #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.name #returns 'IFTFOM'
     #     user.date_joined #uses js_namify to find 'dateJoined' key and returns date
     def method_missing(name, *args, &block)
