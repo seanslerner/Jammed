@@ -44,7 +44,7 @@ module Jammed
     #
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.following('IFTFOM', :order => :date)
-    def folowing(username, opts={})
+    def following(username, opts={})
       Following.following(username, @api_key, opts)
     end
 
