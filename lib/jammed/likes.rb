@@ -1,11 +1,6 @@
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /likes.json?
   class Likes
-    class Search #:nodoc:
-      include HTTParty
-      base_uri 'http://api.thisismyjam.com/1'
-    end
-
     # Calls API for user specific data concerning likes
     #
     # ==== Attributes

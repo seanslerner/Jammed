@@ -1,13 +1,7 @@
 require 'uri'
 
 module Jammed #:nodoc:
-
-  class Search #:nodoc:
-    include HTTParty
-    base_uri 'http://api.thisismyjam.com/1'
-  end
-
-  # Provides methods for calling API endpoint /pseron.json?by=
+  # Provides methods for calling API endpoint /person.json?by=
   class PeopleSearch
 
     # Calls API for a search by username
@@ -34,7 +28,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     Jammed::PeopleSearch.search_artist('beache boys', '08972935872035')
+    #     Jammed::PeopleSearch.search_artist('beach boys', '08972935872035')
     def self.search_artist(artist, api_key)
       search = Search.get "/search/person.json?by=artist&q=#{artist.split.join('+')}&key=#{api_key}"
       search["people"][0] ? search["people"] : "No artists found"

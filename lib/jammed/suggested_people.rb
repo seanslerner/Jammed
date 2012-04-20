@@ -1,12 +1,6 @@
 module Jammed #:nodoc:
   # Provides method for calling API endpoint /suggestedPeople.json?
   class SuggestedPeople
-    
-    class Search #:nodoc:
-      include HTTParty
-      base_uri 'http://api.thisismyjam.com/1'
-    end
-    
     # Calls API for suggested people
     #
     # ==== Examples
