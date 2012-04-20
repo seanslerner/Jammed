@@ -21,16 +21,16 @@ module Jammed #:nodoc:
     #
     #     Jammed::Jams.jams('IFTFOM') #returns all jams
     #     Jammed::Jams.jams('IFTFOM', :show => :past) # returns only past jams
-    def self.jams(username, opts={})
+    def self.jams(username, api_key, opts={})
       case(opts[:show])
       when nil
-        jams = Search.get "/#{username}/jams.json?key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
         jams["jams"] ? jams["jams"] : "404: User Not Found"
       when :past
-        jams = Search.get "/#{username}/jams.json?show=past&key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?show=past&key=#{api_key}"
         jams["jams"] ? jams["jams"] : "404: User Not Found"
       when :current
-        jams = Search.get "/#{username}/jams.json?key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
         jams["jams"][0]['current'] ? jams["jams"][0] : "No Current Jam"
       end
     end

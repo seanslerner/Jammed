@@ -12,8 +12,8 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::PopularJams.popular_jams #returns a sample of popular jams
-    def self.popular_jams
-      Search.get "/popular.json?key=#{API_KEY}"
+    def self.popular_jams(api_key)
+      Search.get "/popular.json?key=#{api_key}"
     end
   end
 end

@@ -2,7 +2,8 @@ require 'spec_helper'
 
 module Jammed
   describe User do
-    let(:user) { Jammed::User.new('IFTFOM') }
+    let(:api_key) {'987bcab01b929eb2c07877b224215c92'}
+    let(:user) { Jammed::User.new('IFTFOM', api_key) }
 
     describe "#initialize" do
       it "sets the username" do
@@ -21,7 +22,7 @@ module Jammed
           user.followers
         end
         it "sends @username + :order options to Jammed::Followers" do
-          Jammed::Followers.should_receive(:followers).with('IFTFOM', {:order => :date})
+          Jammed::Followers.should_receive(:followers).with('IFTFOM', api_key, {:order => :date})
           user.followers(:order => :date)
         end
         it "saves followers in @followers" do
@@ -55,7 +56,7 @@ module Jammed
           user.following
         end
         it "sends @username + :order options to Jammed::Following" do
-          Jammed::Following.should_receive(:following).with('IFTFOM', {:order => :date})
+          Jammed::Following.should_receive(:following).with('IFTFOM', api_key, {:order => :date})
           user.following(:order => :date)
         end
         it "saves followers in @following" do
@@ -88,7 +89,7 @@ module Jammed
           user.jams
         end
         it "sends @username + :show options to Jammed::Jams" do
-          Jammed::Jams.should_receive(:jams).with('IFTFOM', {:show => :past})
+          Jammed::Jams.should_receive(:jams).with('IFTFOM', api_key, {:show => :past})
           user.jams(:show => :past)
         end
         it "saves jams in @jams" do
@@ -121,7 +122,7 @@ module Jammed
           user.likes
         end
         it "sends @username + :show options to Jammed::Likes" do
-          Jammed::Likes.should_receive(:likes).with('IFTFOM', {:show => :past})
+          Jammed::Likes.should_receive(:likes).with('IFTFOM', api_key, {:show => :past})
           user.likes(:show => :past)
         end
         it "saves likes in @likes" do

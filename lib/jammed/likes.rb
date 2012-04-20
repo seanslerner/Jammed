@@ -21,14 +21,14 @@ module Jammed #:nodoc:
     #
     #     Jammed::Likes.likes('IFTFOM') #returns all likes
     #     Jammed::Likes.likes('IFTFOM', :show => :past) # returns only past likes
-    def self.likes(username, opts={})
+    def self.likes(username, api_key, opts={})
       case(opts[:show])
       when nil
-        likes = Search.get "/#{username}/likes.json?key=#{API_KEY}"
+        likes = Search.get "/#{username}/likes.json?key=#{api_key}"
       when :current
-        likes = Search.get "/#{username}/likes.json?show=current&key=#{API_KEY}"
+        likes = Search.get "/#{username}/likes.json?show=current&key=#{api_key}"
       when :past
-        likes = Search.get "/#{username}/likes.json?show=past&key=#{API_KEY}"
+        likes = Search.get "/#{username}/likes.json?show=past&key=#{api_key}"
       end
       likes["jams"] ? likes["jams"] : "404: Not Found"
     end

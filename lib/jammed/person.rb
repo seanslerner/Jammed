@@ -12,8 +12,8 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::Person.profile(:username => 'IFTFOM') #returns IFTFOM's profile data
-    def self.profile(opts={})
-      profile = Search.get "/#{opts[:username]}.json?key=#{API_KEY}"
+    def self.profile(username, api_key)
+      profile = Search.get "/#{username}.json?key=#{api_key}"
       profile["person"] ? profile["person"] : "404: User Not Found"
     end
 
@@ -22,8 +22,8 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::Person.name(:username => 'IFTFOM') #returns 'IFTFOM'
-    def self.name(opts={})
-      self.profile(opts)['name']
+    def self.name(username, api_key)
+      self.profile(username, api_key)['name']
     end
 
     # Calls API for a specific attribute of a user's profile
@@ -32,7 +32,7 @@ module Jammed #:nodoc:
     #
     #     Jammed::Person.joinedDate(:username => 'IFTFOM') #returns IFTFOM's joined date
     def self.method_missing(name, *args, &block)
-      self.profile(args[0]).has_key?(name.to_s) ? self.profile(args[0])[name.to_s] : super
+      self.profile(args[0],args[1]).has_key?(name.to_s) ? self.profile(args[0],args[1])[name.to_s] : super
     end
   end
 end

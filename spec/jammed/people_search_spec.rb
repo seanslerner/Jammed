@@ -2,9 +2,12 @@ require 'spec_helper'
 
 module Jammed
   describe PeopleSearch do
+
+    let(:api_key) {'987bcab01b929eb2c07877b224215c92'}
+
     describe ".search_name" do
       let(:query) {'institute'}
-      let(:search) { Jammed::PeopleSearch.search_name(query) }
+      let(:search) { Jammed::PeopleSearch.search_name(query, api_key) }
       before do 
         serve_response("http://api.thisismyjam.com/1/search/person.json?by=name&q=institute&key=987bcab01b929eb2c07877b224215c92", :search_name)
       end
@@ -28,7 +31,7 @@ module Jammed
 
     describe ".search_artist" do
       let(:query) {'beach boys'}
-      let(:search) { Jammed::PeopleSearch.search_artist(query) }
+      let(:search) { Jammed::PeopleSearch.search_artist(query, api_key) }
 
       before do 
         serve_response("http://api.thisismyjam.com/1/search/person.json?by=artist&q=beach+boys&key=987bcab01b929eb2c07877b224215c92", :search_artist)
@@ -52,7 +55,7 @@ module Jammed
     describe ".search_track" do
       let(:query_artist) {'Lana del Rey'}
       let(:query_track) {'Video games'}
-      let(:search) { Jammed::PeopleSearch.search_track(query_artist, query_track)}
+      let(:search) { Jammed::PeopleSearch.search_track(query_artist, query_track, api_key)}
 
       before do 
         serve_response("http://api.thisismyjam.com/1/search/person.json?by=track&q=Lana+del+Rey|Video+games&key=987bcab01b929eb2c07877b224215c92", :search_track)

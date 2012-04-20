@@ -12,8 +12,8 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::SuggestedPeople.people #returns a list of users with many followers/likes
-    def self.people
-      response = Search.get "/suggestedPeople.json?key=#{API_KEY}"
+    def self.people(api_key)
+      response = Search.get "/suggestedPeople.json?key=#{api_key}"
       response["people"][0] ? response["people"] : "No people found"
     end
   end

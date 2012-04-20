@@ -21,16 +21,16 @@ module Jammed #:nodoc:
     #
     #     Jammed::Following.following('IFTFOM') #returns followings unorderd
     #     Jammed::Following.following('IFTFOM', :order => :date) # returns followings ordered by date
-    def self.following(username, opts={})
+    def self.following(username, api_key, opts={})
       case(opts[:order])
       when nil
-        followings = Search.get "/#{username}/following.json?key=#{API_KEY}"
+        followings = Search.get "/#{username}/following.json?key=#{api_key}"
       when :date
-        followings = Search.get "/#{username}/following.json?order=followedDate&key=#{API_KEY}"
+        followings = Search.get "/#{username}/following.json?order=followedDate&key=#{api_key}"
       when :affinity
-        followings = Search.get "/#{username}/following.json?order=affinity&key=#{API_KEY}"
+        followings = Search.get "/#{username}/following.json?order=affinity&key=#{api_key}"
       when :alpha
-        followings = Search.get "/#{username}/following.json?order=name&key=#{API_KEY}"
+        followings = Search.get "/#{username}/following.json?order=name&key=#{api_key}"
       else
         return "Cannot order Followings by #{opts[:order]}"
       end

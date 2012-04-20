@@ -2,18 +2,21 @@ require 'spec_helper'
 
 module Jammed
   describe Likes do
+
+    let(:api_key) {'987bcab01b929eb2c07877b224215c92'}
+
     describe ".likes" do
       before do
         serve_response("http://api.thisismyjam.com/1/IFTFOM/likes.json?key=987bcab01b929eb2c07877b224215c92", :likes)
       end
       
       it "gets likes from the api" do
-        Jammed::Likes.likes('IFTFOM').should_not be(nil)
+        Jammed::Likes.likes('IFTFOM', api_key).should_not be(nil)
       end
 
       it "gets both current and past likes" do
-        Jammed::Likes.likes('IFTFOM').to_s.should include("\"current\"=>false")
-        Jammed::Likes.likes('IFTFOM').to_s.should include("\"current\"=>true")
+        Jammed::Likes.likes('IFTFOM', api_key).to_s.should include("\"current\"=>false")
+        Jammed::Likes.likes('IFTFOM', api_key).to_s.should include("\"current\"=>true")
       end
     end
 
@@ -23,11 +26,11 @@ module Jammed
       end
       
       it "gets current likes" do
-        Jammed::Likes.likes('IFTFOM', :show => :current).to_s.should include("\"current\"=>true")
+        Jammed::Likes.likes('IFTFOM', api_key, :show => :current).to_s.should include("\"current\"=>true")
       end
 
       it "doesn't get past likes" do
-        Jammed::Likes.likes('IFTFOM', :show => :current).to_s.should_not include("\"current\"=>false")
+        Jammed::Likes.likes('IFTFOM', api_key, :show => :current).to_s.should_not include("\"current\"=>false")
       end
     end
 
@@ -37,11 +40,11 @@ module Jammed
       end
       
       it "gets past likes" do
-        Jammed::Likes.likes('IFTFOM', :show => :past).to_s.should include("\"current\"=>false")
+        Jammed::Likes.likes('IFTFOM', api_key, :show => :past).to_s.should include("\"current\"=>false")
       end
 
       it "doesn't get current likes" do
-        Jammed::Likes.likes('IFTFOM', :show => :past).to_s.should_not include("\"current\"=>true")
+        Jammed::Likes.likes('IFTFOM', api_key, :show => :past).to_s.should_not include("\"current\"=>true")
       end
     end
   end

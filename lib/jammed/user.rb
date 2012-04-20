@@ -14,12 +14,13 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #       iftfom = Jammed::User.new('IFTFOM')
-    def initialize(username)
+    def initialize(username, api_key)
       @username = username
+      @api_key = api_key
     end
 
     def followers(opts={})
-      @followers ||= Jammed::Followers.followers(@username, opts)
+      @followers ||= Jammed::Followers.followers(@username, @api_key, opts)
     end
 
     # Clears cached Followers data with a fresh call to Jammed::Followers
@@ -38,11 +39,11 @@ module Jammed #:nodoc:
     #     user.followers #returns all followers of IFTFOM
     #     user.followers(:order => :date) #reutrns IFTFOM's followers ordered by date
     def followers!(opts={})
-      @followers = Jammed::Followers.followers(@username, opts)
+      @followers = Jammed::Followers.followers(@username, @api_key, opts)
     end
 
     def following(opts={})
-      @following ||= Jammed::Following.following(@username, opts)
+      @following ||= Jammed::Following.following(@username, @api_key, opts)
     end
 
     # Clears cached Following data with a fresh call to Jammed::Following
@@ -61,11 +62,11 @@ module Jammed #:nodoc:
     #     user.following #returns all followings of IFTFOM
     #     user.following(:order => :date) #returns IFTFOM's followings ordered by date
     def following!(opts={})
-      @following = Jammed::Following.following(@username, opts)
+      @following = Jammed::Following.following(@username, @api_key, opts)
     end
 
     def jams(opts={})
-      @jams ||= Jammed::Jams.jams(@username, opts)
+      @jams ||= Jammed::Jams.jams(@username, @api_key, opts)
     end
 
     # Clears cached Jams data with a fresh call to Jammed::Jams
@@ -84,11 +85,11 @@ module Jammed #:nodoc:
     #     user.jams #returns all jams of IFTFOM
     #     user.jams(:show => :past) #returns IFTFOM's past jams
     def jams!(opts={})
-      @jams = Jammed::Jams.jams(@username, opts)
+      @jams = Jammed::Jams.jams(@username, @api_key, opts)
     end
 
     def likes(opts={})
-      @likes ||= Jammed::Likes.likes(@username, opts)
+      @likes ||= Jammed::Likes.likes(@username, @api_key, opts)
     end
 
     # Clears cached Likes data with a fresh call to Jammed::Likes
@@ -107,11 +108,11 @@ module Jammed #:nodoc:
     #     user.likes #returns all likes of IFTFOM
     #     user.likes(:show => :past) #returns IFTFOM's past likes
     def likes!(opts={})
-      @likes = Jammed::Likes.likes(@username, opts)
+      @likes = Jammed::Likes.likes(@username, @api_key, opts)
     end
     
     def profile
-      @profile ||= Jammed::Person.profile(:username => @username)
+      @profile ||= Jammed::Person.profile(@username, @api_key)
     end
 
     # Clears cached Person data with a fresh call to Jammed::Person
@@ -121,7 +122,7 @@ module Jammed #:nodoc:
     #     user = Jammed::User.new('IFTFOM')
     #     user.profile #returns entire profile of IFTFOM
     def profile!
-      @profile = Jammed::Person.profile(:username => @username)
+      @profile = Jammed::Person.profile(@username, @api_key)
     end
 
     # Checks user's profile for attribute and returns value if attribute key is found.
