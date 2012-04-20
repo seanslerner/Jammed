@@ -11,6 +11,7 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +username+ - The username of the user whose followings you want to retrieve
+    # * +api_key+ - The key to use with the API call
     # * +opts+ - Options for which data is shown
     #
     # ==== Options
@@ -19,18 +20,18 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     Jammed::Jams.jams('IFTFOM') #returns all jams
-    #     Jammed::Jams.jams('IFTFOM', :show => :past) # returns only past jams
-    def self.jams(username, opts={})
+    #     Jammed::Jams.jams('IFTFOM', '08972935872035') #returns all jams
+    #     Jammed::Jams.jams('IFTFOM', '08972935872035', :show => :past) # returns only past jams
+    def self.jams(username, api_key, opts={})
       case(opts[:show])
       when nil
-        jams = Search.get "/#{username}/jams.json?key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
         jams["jams"] ? jams["jams"] : "404: User Not Found"
       when :past
-        jams = Search.get "/#{username}/jams.json?show=past&key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?show=past&key=#{api_key}"
         jams["jams"] ? jams["jams"] : "404: User Not Found"
       when :current
-        jams = Search.get "/#{username}/jams.json?key=#{API_KEY}"
+        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
         jams["jams"][0]['current'] ? jams["jams"][0] : "No Current Jam"
       end
     end

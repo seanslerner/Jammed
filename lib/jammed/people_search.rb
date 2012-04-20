@@ -15,12 +15,13 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +name+ - Username to search by
+    # * +api_key+ - The key to use with the API call
     #
     # ==== Examples
     #
-    #     Jammed::PeopleSearch.search_name('IFTFOM')
-    def self.search_name(name)
-      search = Search.get "/search/person.json?by=name&q=#{name.split.join('+')}&key=#{API_KEY}"
+    #     Jammed::PeopleSearch.search_name('IFTFOM', '08972935872035')
+    def self.search_name(name, api_key)
+      search = Search.get "/search/person.json?by=name&q=#{name.split.join('+')}&key=#{api_key}"
       search["people"][0] ? search["people"] : "No people found"
     end
 
@@ -29,12 +30,13 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +artist+ - Artist to search by
+    # * +api_key+ - The key to use with the API call
     #
     # ==== Examples
     #
-    #     Jammed::PeopleSearch.search_artist('beache boys')
-    def self.search_artist(artist)
-      search = Search.get "/search/person.json?by=artist&q=#{artist.split.join('+')}&key=#{API_KEY}"
+    #     Jammed::PeopleSearch.search_artist('beache boys', '08972935872035')
+    def self.search_artist(artist, api_key)
+      search = Search.get "/search/person.json?by=artist&q=#{artist.split.join('+')}&key=#{api_key}"
       search["people"][0] ? search["people"] : "No artists found"
     end
 
@@ -44,12 +46,13 @@ module Jammed #:nodoc:
     #
     # * +artist+ - Artist to search by
     # * +track+ - Track to search by
+    # * +api_key+ - The key to use with the API call
     #
     # ==== Examples
     #
-    #     Jammed::PeopleSearch.search_track('beach boys', 'good vibrations')
-    def self.search_track(artist, track)
-      uri = URI.escape("/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{API_KEY}", '|')
+    #     Jammed::PeopleSearch.search_track('beach boys', 'good vibrations', '08972935872035')
+    def self.search_track(artist, track, api_key)
+      uri = URI.escape("/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{api_key}", '|')
       search = Search.get uri   
       search["people"][0] ? search["people"] : "No tracks found"  
     end

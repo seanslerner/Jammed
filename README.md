@@ -19,54 +19,25 @@ Or install it yourself as:
 
 ## Usage
 
-#### People Search
+Note: Right now, since the API is in beta, `Jammed.new` can be called without supplying an API key (it defaults to the beta key). Once individual dev keys are available this will change.
 
-Returns people with the search string in their username, full name or Twitter name:
+```ruby
+require 'jammed'
 
-    $ Jammed::PeopleSearch.search_name('institute')
+jammed = Jammed.new('987bcab01b929eb2c07877b224215c92')
 
-Returns people who have posted tracks by artists:
+pop_jams = jammed.popular_jams
 
-    $ Jammed::PeopleSearch.search_artist('beach boys')
+iftfom_profile = jammed.profile('IFTFOM')
+iftfom_likes = jammed.likes('IFTFOM', :show => :current)
 
-Returns people who have posted a particular track (strict, case-insensitive matching).
+iftfom = jammed.user('IFTFOM')
+iftfom.profile # same as jammed.profile('IFTFOM')
+iftfom.likes(:show => :current) # same as jammed.likes('IFTFOM', :show => :current)
+iftfom.likes! #resets cached likes and return all of IFTFOM's like
+```
 
-    $ Jammed::PeopleSearch.search_track('Lana del Rey', 'Video games')
-
-#### Popular Jams
-
-Returns random sample (20 out of 40) of popular jams over the past 48 hours:
-
-    $ Jammed::PopularJams.popular_jams
-
-#### Suggested People
-
-Returns list of suggested users:
-
-    $ Jammed::SuggestedPeople.people
-
-#### User
-
-Provides methods to interact with user specific data through Jammed::User objects:
-
-    user = Jammed::User.new('IFTFOM')
-    user.profile
-      # caches and returns API call to /IFTFOM.json?
-    user.name
-      # returns the attribute value if present in profile ('IFTFOM')
-    user.followers(:order => :date)
-      # caches and returns API call to /followers.json?order=date
-    user.followers!
-      # clears cache and returns API call to /followers.json
-
-See source for all Jammed::User instance methods.
-
-The user specific API calls can also be called directly:
-
-    $ Jammed::Person.profile(:username => 'IFTFOM')
-      #same as user.profile above
-    $ Jammed::Followers.followers('IFTFOM', :order => :date)
-      #same as user.followers(:order => :date) above
+Also, pagination is not supported at the moment. So, at most you will get the first 60 results for any API call that returns a list. Automatically handling pagination is a first priority for the next release.
 
 ## Links
 

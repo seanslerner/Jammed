@@ -3,13 +3,15 @@ require 'spec_helper'
 module Jammed
   describe Following do
 
+    let(:api_key) {'987bcab01b929eb2c07877b224215c92'}
+
     describe ".following" do
       before do
         serve_response("http://api.thisismyjam.com/1/IFTFOM/following.json?key=987bcab01b929eb2c07877b224215c92", :following)
       end
       
       it "gets followings from the api" do
-        Jammed::Following.following('IFTFOM').should_not be(nil)
+        Jammed::Following.following('IFTFOM', api_key).should_not be(nil)
       end
     end
 
@@ -19,7 +21,7 @@ module Jammed
       end
       
       it "can order followings by date" do
-        Jammed::Following.following('IFTFOM', :order => :date).should_not be_nil
+        Jammed::Following.following('IFTFOM', api_key, :order => :date).should_not be_nil
       end
     end
 
@@ -29,7 +31,7 @@ module Jammed
       end
       
       it "can order followings by likes" do
-        Jammed::Following.following('IFTFOM', :order => :affinity).should_not be_nil
+        Jammed::Following.following('IFTFOM', api_key, :order => :affinity).should_not be_nil
       end
     end
 
@@ -39,14 +41,14 @@ module Jammed
       end
       
       it "can order followings by name" do
-        Jammed::Following.following('IFTFOM', :order => :name).should_not be_nil
+        Jammed::Following.following('IFTFOM', api_key, :order => :name).should_not be_nil
       end
     end 
 
     context ".following with bad :order value" do
       it "complains when non-existant :order value given" do
         message = "Cannot order Followings by bad"
-        Jammed::Following.following('IFTFOM', :order => :bad).should == message
+        Jammed::Following.following('IFTFOM', api_key, :order => :bad).should == message
       end
     end
   end

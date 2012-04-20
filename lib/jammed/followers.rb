@@ -11,6 +11,7 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +username+ - The username of the user whose followers you want to retrieve
+    # * +api_key+ - The key to use with the API call
     # * +opts+ - Options for ordering the data
     #
     # ==== Options
@@ -19,18 +20,18 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     Jammed::Followers.followers('IFTFOM') #returns followers unorderd
-    #     Jammed::Followers.followers('IFTFOM', :order => :date) # returns followers ordered by date
-    def self.followers(username, opts={})
+    #     Jammed::Followers.followers('IFTFOM', '08972935872035') #returns followers unorderd
+    #     Jammed::Followers.followers('IFTFOM', '08972935872035', :order => :date) # returns followers ordered by date
+    def self.followers(username, api_key, opts={})
       case(opts[:order])
       when nil
-        followers = Search.get "/#{username}/followers.json?key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?key=#{api_key}"
       when :date
-        followers = Search.get "/#{username}/followers.json?order=followedDate&key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?order=followedDate&key=#{api_key}"
       when :affinity
-        followers = Search.get "/#{username}/followers.json?order=affinity&key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?order=affinity&key=#{api_key}"
       when :alpha
-        followers = Search.get "/#{username}/followers.json?order=name&key=#{API_KEY}"
+        followers = Search.get "/#{username}/followers.json?order=name&key=#{api_key}"
       else
         return "Cannot order Followers by #{opts[:order]}"
       end
