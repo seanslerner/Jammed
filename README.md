@@ -42,7 +42,7 @@ Also, pagination is not supported at the moment. So, at most you will get the fi
 ## Links
 
 * [This Is My Jam](http://www.thisismyjam.com/)
-* [This Is My Jam API Documentation](http://www.thisismyjam.com/developers)
+* [This Is My Jam API Documentation](http://www.thisismyjam.com/developers/beta)
 * [This Is My Jam API Google Group](https://groups.google.com/forum/?fromgroups#!forum/thisismyapi)
 
 ## Contributing
