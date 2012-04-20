@@ -11,6 +11,7 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +username+ - The username of the user whose followings you want to retrieve
+    # * +api_key+ - The key to use with the API call
     # * +opts+ - Options for which data is shown
     #
     # ==== Options
@@ -19,8 +20,8 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     Jammed::Likes.likes('IFTFOM') #returns all likes
-    #     Jammed::Likes.likes('IFTFOM', :show => :past) # returns only past likes
+    #     Jammed::Likes.likes('IFTFOM', '08972935872035') #returns all likes
+    #     Jammed::Likes.likes('IFTFOM', '08972935872035', :show => :past) # returns only past likes
     def self.likes(username, api_key, opts={})
       case(opts[:show])
       when nil

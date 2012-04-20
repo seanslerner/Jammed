@@ -11,6 +11,7 @@ module Jammed #:nodoc:
     # ==== Attributes
     #
     # * +username+ - The username of the user whose followings you want to retrieve
+    # * +api_key+ - The key to use with the API call
     # * +opts+ - Options for ordering the data
     #
     # ==== Options
@@ -19,8 +20,8 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #     Jammed::Following.following('IFTFOM') #returns followings unorderd
-    #     Jammed::Following.following('IFTFOM', :order => :date) # returns followings ordered by date
+    #     Jammed::Following.following('IFTFOM', '08972935872035') #returns followings unorderd
+    #     Jammed::Following.following('IFTFOM', '08972935872035', :order => :date) # returns followings ordered by date
     def self.following(username, api_key, opts={})
       case(opts[:order])
       when nil

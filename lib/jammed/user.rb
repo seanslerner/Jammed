@@ -13,7 +13,7 @@ module Jammed #:nodoc:
     #
     # ==== Examples
     #
-    #       iftfom = Jammed::User.new('IFTFOM')
+    #       iftfom = Jammed::User.new('IFTFOM', '08972935872035')
     def initialize(username, api_key)
       @username = username
       @api_key = api_key
