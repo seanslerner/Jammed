@@ -1,6 +1,6 @@
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /jams.json?
-  class Jams
+  class Jams < API
     # Calls API for user specific data concerning jams
     #
     # ==== Attributes
@@ -20,14 +20,18 @@ module Jammed #:nodoc:
     def self.jams(username, api_key, opts={})
       case(opts[:show])
       when nil
-        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
-        jams["jams"] ? jams["jams"] : "404: User Not Found"
+        response = request(:get, "/#{username}/jams.json", 
+          :query => {:key => api_key})
+        JSON.parse(response.body)['jams']
       when :past
-        jams = Search.get "/#{username}/jams.json?show=past&key=#{api_key}"
-        jams["jams"] ? jams["jams"] : "404: User Not Found"
+        response = request(:get, "/#{username}/jams.json", 
+          :query => {:show => 'past', :key => api_key})
+        JSON.parse(response.body)['jams']
       when :current
-        jams = Search.get "/#{username}/jams.json?key=#{api_key}"
-        jams["jams"][0]['current'] ? jams["jams"][0] : "No Current Jam"
+        response = request(:get, "/#{username}/jams.json", 
+          :query => {:key => api_key})
+        jams = JSON.parse(response.body)['jams'][0]
+        jams['current'] ? jams : "No Current Jam"
       end
     end
   end

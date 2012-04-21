@@ -1,4 +1,5 @@
 require 'httparty'
+require 'json'
 Dir[File.dirname(__FILE__) + '/jammed/*.rb'].each do |file|
   require file
 end

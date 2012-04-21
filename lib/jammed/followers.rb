@@ -1,6 +1,6 @@
 module Jammed #:nodoc: 
   # Provides methods for calling API endpoint /follower.json?
-  class Followers
+  class Followers < API
     # Calls API for user specific data concerning followers
     #
     # ==== Attributes
@@ -20,17 +20,21 @@ module Jammed #:nodoc:
     def self.followers(username, api_key, opts={})
       case(opts[:order])
       when nil
-        followers = Search.get "/#{username}/followers.json?key=#{api_key}"
+        response = request(:get, "/#{username}/followers.json", 
+          :query => {:key => api_key})
       when :date
-        followers = Search.get "/#{username}/followers.json?order=followedDate&key=#{api_key}"
+        response = request(:get, "/#{username}/followers.json", 
+          :query => {:order => 'followedDate', :key => api_key})
       when :affinity
-        followers = Search.get "/#{username}/followers.json?order=affinity&key=#{api_key}"
+        response = request(:get, "/#{username}/followers.json", 
+          :query => {:order => 'affinity', :key => api_key})
       when :alpha
-        followers = Search.get "/#{username}/followers.json?order=name&key=#{api_key}"
+        response = request(:get, "/#{username}/followers.json", 
+          :query => {:order => 'name', :key => api_key})
       else
         return "Cannot order Followers by #{opts[:order]}"
       end
-      followers["people"] ? followers["people"] : "404 Not Found" 
+      JSON.parse(response.body)['people']
     end
   end
 end
