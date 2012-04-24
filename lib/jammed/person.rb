@@ -26,7 +26,7 @@ module Jammed #:nodoc:
     #
     #     Jammed::Person.joinedDate('IFTFOM', '08972935872035') #returns IFTFOM's joined date
     def self.method_missing(name, *args, &block)
-      self.profile(args[0],args[1]).has_key?(name.to_s) ? self.profile(args[0],args[1])[name.to_s] : super
+      Jammed::Person.profile(args[0],args[1]).has_key?(name.to_s) ? self.profile(args[0],args[1])[name.to_s] : super
     end
   end
 end
