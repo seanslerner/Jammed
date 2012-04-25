@@ -31,7 +31,7 @@ module Jammed
       end
 
       it "raises method missing if attribute is not present" do
-        lambda { Jammed::Person.foo_attribute('IFTFOM', api_key) }.should raise_error NoMethodError
+        lambda { Jammed::Person.foo_attribute('IFTFOM', api_key) }.should raise_error 
       end
     end
   end

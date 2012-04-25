@@ -191,8 +191,7 @@ module Jammed
         end
 
         it "raises method missing if attribute is not present" do
-          pending
-          #lambda { user.foo_attribute }.should raise_error NoMethodError
+          lambda { user.foo_attribute }.should raise_error NameError
         end
       end
 

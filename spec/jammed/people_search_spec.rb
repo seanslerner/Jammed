@@ -35,6 +35,9 @@ module Jammed
 
       before do 
         serve_response("http://api.thisismyjam.com/1/search/person.json?by=artist&q=beach+boys&key=987bcab01b929eb2c07877b224215c92", :search_artist)
+        stub_request(:get, "http://api.thisismyjam.com/1/search/person.json?by=artist&q=beach+boys&key=987bcab01b929eb2c07877b224215c92").
+         with(:headers => {'Accept'=>'application/json', 'Content-Type'=>'application/json; charset=utf-8', 'User-Agent'=>'Jammed/0.1.0'}).
+         to_return(:status => 200, :body => "", :headers => {})
       end
 
       it "returns people from the API" do
