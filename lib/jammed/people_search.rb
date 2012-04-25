@@ -48,9 +48,11 @@ module Jammed #:nodoc:
     #
     #     Jammed::PeopleSearch.search_track('beach boys', 'good vibrations', '08972935872035')
     def self.search_track(artist, track, api_key)
-      uri = URI.escape("/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{api_key}", '|')
-      search = Search.get uri   
-      search["people"][0] ? search["people"] : "No tracks found"  
+      response = request(:get, "/search/person.json",
+          :query => {:by => 'track', 
+                     :q => "#{artist.split.join('+')}|#{track.split.join('+')}",
+                     :key => api_key})
+      JSON.parse(response.body)['people'] 
     end
 
   end
