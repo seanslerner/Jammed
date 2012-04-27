@@ -110,6 +110,16 @@ module Jammed
       Person.profile(username, @api_key)
     end
 
+    # Calls Jammed::RandomJam.jam
+    #
+    # ==== Examples
+    #
+    #     jammed = Jammed.new('08972935872035')
+    #     jammed.random
+    def random
+      RandomJam.jam(@api_key)
+    end
+
     # Calls Jammed::PeopleSearch.search_name
     #
     # ==== Attributes

@@ -2,7 +2,7 @@ require 'uri'
 
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /person.json?by=
-  class PeopleSearch
+  class PeopleSearch < API
 
     # Calls API for a search by username
     #
@@ -15,8 +15,9 @@ module Jammed #:nodoc:
     #
     #     Jammed::PeopleSearch.search_name('IFTFOM', '08972935872035')
     def self.search_name(name, api_key)
-      search = Search.get "/search/person.json?by=name&q=#{name.split.join('+')}&key=#{api_key}"
-      search["people"][0] ? search["people"] : "No people found"
+      response = request(:get, "/search/person.json", 
+          :query => {:by => 'name', :q => "#{name.split.join('+')}", :key => api_key})
+      JSON.parse(response.body)['people']
     end
 
     # Calls API for a search by artist
@@ -30,8 +31,9 @@ module Jammed #:nodoc:
     #
     #     Jammed::PeopleSearch.search_artist('beach boys', '08972935872035')
     def self.search_artist(artist, api_key)
-      search = Search.get "/search/person.json?by=artist&q=#{artist.split.join('+')}&key=#{api_key}"
-      search["people"][0] ? search["people"] : "No artists found"
+      response = request(:get, "/search/person.json", 
+          :query => {:by => 'artist', :q => "#{artist.split.join('+')}", :key => api_key})
+      JSON.parse(response.body)['people']
     end
 
     # Calls API for a search by track
@@ -46,9 +48,11 @@ module Jammed #:nodoc:
     #
     #     Jammed::PeopleSearch.search_track('beach boys', 'good vibrations', '08972935872035')
     def self.search_track(artist, track, api_key)
-      uri = URI.escape("/search/person.json?by=track&q=#{artist.split.join('+')}|#{track.split.join('+')}&key=#{api_key}", '|')
-      search = Search.get uri   
-      search["people"][0] ? search["people"] : "No tracks found"  
+      response = request(:get, "/search/person.json",
+          :query => {:by => 'track', 
+                     :q => "#{artist.split.join('+')}|#{track.split.join('+')}",
+                     :key => api_key})
+      JSON.parse(response.body)['people'] 
     end
 
   end

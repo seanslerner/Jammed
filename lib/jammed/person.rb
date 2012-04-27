@@ -1,14 +1,14 @@
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /username.json? and accessing user specific data
-  class Person
+  class Person < API
     # Calls API for a specific user's profile
     #
     # ==== Examples
     #
     #     Jammed::Person.profile('IFTFOM', '08972935872035') #returns IFTFOM's profile data
     def self.profile(username, api_key)
-      profile = Search.get "/#{username}.json?key=#{api_key}"
-      profile["person"] ? profile["person"] : "404: User Not Found"
+      response = request(:get, "/#{username}.json", :query => {:key => api_key})
+      JSON.parse(response.body)["person"]
     end
 
     # Calls API for a specific user's name
@@ -26,7 +26,7 @@ module Jammed #:nodoc:
     #
     #     Jammed::Person.joinedDate('IFTFOM', '08972935872035') #returns IFTFOM's joined date
     def self.method_missing(name, *args, &block)
-      self.profile(args[0],args[1]).has_key?(name.to_s) ? self.profile(args[0],args[1])[name.to_s] : super
+      Jammed::Person.profile(args[0],args[1]).has_key?(name.to_s) ? self.profile(args[0],args[1])[name.to_s] : super
     end
   end
 end

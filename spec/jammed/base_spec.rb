@@ -52,6 +52,13 @@ module Jammed
       end
     end
 
+    describe "#random" do 
+      it "calls Jammed::RandomJam.jam" do
+        Jammed::RandomJam.should_receive(:jam)
+        jammed.random
+      end
+    end
+
     describe "#search_name" do 
       it "calls Jammed::PeopleSearch.search_name" do
         Jammed::PeopleSearch.should_receive(:search_name)

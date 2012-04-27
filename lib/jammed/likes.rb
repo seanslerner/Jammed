@@ -1,6 +1,6 @@
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /likes.json?
-  class Likes
+  class Likes < API
     # Calls API for user specific data concerning likes
     #
     # ==== Attributes
@@ -20,13 +20,16 @@ module Jammed #:nodoc:
     def self.likes(username, api_key, opts={})
       case(opts[:show])
       when nil
-        likes = Search.get "/#{username}/likes.json?key=#{api_key}"
+        response = request(:get, "/#{username}/likes.json", 
+          :query => {:key => api_key})
       when :current
-        likes = Search.get "/#{username}/likes.json?show=current&key=#{api_key}"
+        response = request(:get, "/#{username}/likes.json", 
+          :query => {:show => 'current', :key => api_key})
       when :past
-        likes = Search.get "/#{username}/likes.json?show=past&key=#{api_key}"
+        response = request(:get, "/#{username}/likes.json", 
+          :query => {:show => 'past', :key => api_key})
       end
-      likes["jams"] ? likes["jams"] : "404: Not Found"
+      JSON.parse(response.body)['jams']
     end
   end
 end

@@ -34,7 +34,8 @@ module Jammed
       let(:search) { Jammed::PeopleSearch.search_artist(query, api_key) }
 
       before do 
-        serve_response("http://api.thisismyjam.com/1/search/person.json?by=artist&q=beach+boys&key=987bcab01b929eb2c07877b224215c92", :search_artist)
+        #serve_response("http://api.thisismyjam.com/1/search/person.json?by=artist&q=beach+boys&key=987bcab01b929eb2c07877b224215c92", :search_artist)
+        serve_response(/by=artist/, :search_artist)
       end
 
       it "returns people from the API" do
@@ -58,7 +59,8 @@ module Jammed
       let(:search) { Jammed::PeopleSearch.search_track(query_artist, query_track, api_key)}
 
       before do 
-        serve_response("http://api.thisismyjam.com/1/search/person.json?by=track&q=Lana+del+Rey|Video+games&key=987bcab01b929eb2c07877b224215c92", :search_track)
+        #serve_response("http://api.thisismyjam.com/1/search/person.json?by=track&q=Lana+del+Rey|Video+games&key=987bcab01b929eb2c07877b224215c92", :search_track)
+        serve_response(/by=track/, :search_track)
       end
 
       it "returns people from the API" do
