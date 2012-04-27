@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 SAMPLE_RESPONSES_DIR = "sample_responses"
 
-def serve_response(path, file_name)
+def serve_response(path, file_name, status=200)
   begin
     response_body = File.binread(
                       File.dirname(__FILE__) +
@@ -13,6 +13,6 @@ def serve_response(path, file_name)
   end
   
   stub_request(:get, path)
-    .to_return(:status => 200, :body => response_body,
+    .to_return(:status => status, :body => response_body,
                                :headers => {:content_type => 'application/json'})
 end

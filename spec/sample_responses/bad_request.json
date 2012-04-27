@@ -1,0 +1,6 @@
+{
+  "error":true,
+  "code":400,
+  "text":"Bad Request",
+  "message":"Invalid value for 'show' parameter: 'them'"
+}

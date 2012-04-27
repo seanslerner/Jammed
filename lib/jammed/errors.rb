@@ -1,5 +1,5 @@
 module Jammed
-  class HTTPError < StandardError
+  class HTTPError < StandardError #:nodoc: 
     attr_reader :response
     attr_reader :params
 
@@ -14,10 +14,16 @@ module Jammed
     end
   end
 
-  class RateLimited < HTTPError; end
-  class NotFound < HTTPError; end
-  class Unavailable < HTTPError; end
-  class InformJammed < HTTPError; end
-  class BadRequest < HTTPError; end
-  class ServerError < HTTPError; end
+  class RateLimited < HTTPError#:nodoc: 
+  end
+  class NotFound < HTTPError#:nodoc: 
+  end
+  class Unavailable < HTTPError#:nodoc: 
+  end
+  class InformJammed < HTTPError#:nodoc: 
+  end
+  class BadRequest < HTTPError#:nodoc: 
+  end
+  class ServerError < HTTPError
+  #:nodoc: end
 end

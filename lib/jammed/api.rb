@@ -1,6 +1,18 @@
 module Jammed
+  # A base class for API calling classes to inherit from which provides a method for making HTTP requests
   class API
 
+    # Call the API through HTTParty and returns the correct error if error raised
+    #
+    # ==== Attributes
+    #
+    # * +method+ - HTTP method for making hte request (:get, :post, etc.)
+    # * +path+ - Path to API endpoint (/IFTFOM.json)
+    # * +opts+ - Query options (API key!) (:show => :past)
+    #
+    # ==== Examples
+    #
+    #     Jammed::API.request(:get, /IFTFOM/followers.json, :query => {:key => 'api_key', :order => 'affinity'})
     def self.request(method, path, opts={})
       base_uri = 'http://api.thisismyjam.com/1'
 
