@@ -24,6 +24,6 @@ module Jammed
   end
   class BadRequest < HTTPError#:nodoc: 
   end
-  class ServerError < HTTPError
-  #:nodoc: end
+  class ServerError < HTTPError#:nodoc: 
+  end
 end
