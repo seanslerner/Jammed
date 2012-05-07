@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "httparty", ">= 0.8.2"
-gem "json"
+gem "json", "~> 1.7.1"
 
 group :development do
   gem "rake", ">= 0.8.7"
