@@ -102,7 +102,7 @@ module Jammed
 
     describe "#user" do 
       it "calls Jammed::User.new" do
-        Jammed::User.should_receive(:new).with(user, api_key)
+        Jammed::User.should_receive(:new).with(user, api_key, false)
         jammed.user(user)
       end
     end

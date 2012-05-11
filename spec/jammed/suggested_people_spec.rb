@@ -11,7 +11,7 @@ module Jammed
       end
       
       it "returns people from the API" do
-        Jammed::SuggestedPeople.people(api_key).should_not be_nil
+        Jammed::SuggestedPeople.people(api_key, false).should_not be_nil
       end
     end
   end

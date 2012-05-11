@@ -6,8 +6,9 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::RandomJam.jam('08972935872035') #returns a random jam + the profile of the user
-    def self.jam(api_key)
-      response = request(:get, "/random.json", :query => {:key => api_key})
+    def self.jam(api_key, https=false)
+      response = request(:get, "/random.json", {:https => https,
+        :query => {:key => api_key}})
       JSON.parse(response.body)
     end
   end

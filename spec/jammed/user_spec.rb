@@ -22,7 +22,7 @@ module Jammed
           user.followers
         end
         it "sends @username + :order options to Jammed::Followers" do
-          Jammed::Followers.should_receive(:followers).with('IFTFOM', api_key, {:order => :date})
+          Jammed::Followers.should_receive(:followers).with('IFTFOM', api_key, {:order => :date, :https=> false})
           user.followers(:order => :date)
         end
         it "saves followers in @followers" do
@@ -56,7 +56,7 @@ module Jammed
           user.following
         end
         it "sends @username + :order options to Jammed::Following" do
-          Jammed::Following.should_receive(:following).with('IFTFOM', api_key, {:order => :date})
+          Jammed::Following.should_receive(:following).with('IFTFOM', api_key, {:order => :date, :https=> false})
           user.following(:order => :date)
         end
         it "saves followers in @following" do
@@ -89,7 +89,7 @@ module Jammed
           user.jams
         end
         it "sends @username + :show options to Jammed::Jams" do
-          Jammed::Jams.should_receive(:jams).with('IFTFOM', api_key, {:show => :past})
+          Jammed::Jams.should_receive(:jams).with('IFTFOM', api_key, {:show => :past, :https=> false})
           user.jams(:show => :past)
         end
         it "saves jams in @jams" do
@@ -122,7 +122,7 @@ module Jammed
           user.likes
         end
         it "sends @username + :show options to Jammed::Likes" do
-          Jammed::Likes.should_receive(:likes).with('IFTFOM', api_key, {:show => :past})
+          Jammed::Likes.should_receive(:likes).with('IFTFOM', api_key, {:show => :past, :https=> false})
           user.likes(:show => :past)
         end
         it "saves likes in @likes" do

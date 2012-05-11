@@ -12,11 +12,11 @@ module Jammed
       end
       
       it "parses the JSON return into a hash" do
-        Jammed::RandomJam.jam(api_key).should be_an_instance_of Hash
+        Jammed::RandomJam.jam(api_key, false).should be_an_instance_of Hash
       end
 
       it "gets popular jams from the api" do
-        Jammed::RandomJam.jam(api_key).should_not be_nil
+        Jammed::RandomJam.jam(api_key, false).should_not be_nil
       end
     end
   end

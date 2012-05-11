@@ -112,7 +112,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.profile('IFTFOM')
     def profile(username)
-      Person.profile(username, @api_key)
+      Person.profile(username, @api_key, @https)
     end
 
     # Calls Jammed::RandomJam.jam
@@ -122,7 +122,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.random
     def random
-      RandomJam.jam(@api_key)
+      RandomJam.jam(@api_key, @https)
     end
 
     # Calls Jammed::PeopleSearch.search_name
@@ -136,7 +136,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.search_name('IFTFOM')
     def search_name(name)
-      PeopleSearch.search_name(name, @api_key)
+      PeopleSearch.search_name(name, @api_key, @https)
     end
 
     # Calls Jammed::PeopleSearch.search_artist
@@ -150,7 +150,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.search_artist('IFTFOM')
     def search_artist(artist)
-      PeopleSearch.search_artist(artist, @api_key)
+      PeopleSearch.search_artist(artist, @api_key, @https)
     end
 
     # Calls Jammed::PeopleSearch.search_track
@@ -165,7 +165,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.search_track('IFTFOM')
     def search_track(artist, track)
-      PeopleSearch.search_track(artist, track, @api_key)
+      PeopleSearch.search_track(artist, track, @api_key, @https)
     end
 
     # Calls Jammed::SuggestedPeople.people
@@ -175,7 +175,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.suggest_people
     def suggested_people
-      SuggestedPeople.people(@api_key)
+      SuggestedPeople.people(@api_key, @https)
     end
 
     # Calls Jammed::User.new and creates a new User object for interacting with user specific data. It provides methods for interacting with user-specific data.
@@ -191,7 +191,7 @@ module Jammed
     #     ift.profile
     #     ift.jams(:show => :past)
     def user(username)
-      User.new(username, @api_key)
+      User.new(username, @api_key, @https)
     end
   end
 end

@@ -8,8 +8,9 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::SuggestedPeople.people('08972935872035') #returns a list of users with many followers/likes
-    def self.people(api_key)
-      response = request(:get, "/suggestedPeople.json", :query => {:key => api_key})
+    def self.people(api_key, https=false)
+      response = request(:get, "/suggestedPeople.json", {:https => https,
+        :query => {:key => api_key}})
       JSON.parse(response.body)['people']
     end
   end
