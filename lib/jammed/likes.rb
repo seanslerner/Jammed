@@ -20,14 +20,14 @@ module Jammed #:nodoc:
     def self.likes(username, api_key, opts={})
       case(opts[:show])
       when nil
-        response = request(:get, "/#{username}/likes.json", 
-          :query => {:key => api_key})
+        response = request(:get, "/#{username}/likes.json", {:https => opts[:https],
+          :query => {:key => api_key}})
       when :current
-        response = request(:get, "/#{username}/likes.json", 
-          :query => {:show => 'current', :key => api_key})
+        response = request(:get, "/#{username}/likes.json", {:https => opts[:https],
+          :query => {:show => 'current', :key => api_key}})
       when :past
-        response = request(:get, "/#{username}/likes.json", 
-          :query => {:show => 'past', :key => api_key})
+        response = request(:get, "/#{username}/likes.json", {:https => opts[:https],
+          :query => {:show => 'past', :key => api_key}})
       end
       JSON.parse(response.body)['jams']
     end

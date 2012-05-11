@@ -8,11 +8,24 @@ module Jammed
     let(:user) {'IFTFOM'}
 
     describe "#initialize" do
+      it "sets @https" do
+        jam = Jammed::Base.new(api_key, :https => true)
+        jam.https.should be true
+      end
+
+      it "defaults @https to false" do
+        jammed.https.should be false
+      end
     end
 
     describe "#followers" do 
       it "calls Jammed::Followers.followers" do
         Jammed::Followers.should_receive(:followers)
+        jammed.followers(user)
+      end
+
+      it "merges @https into opts" do
+        Jammed::Followers.should_receive(:followers).with(user, api_key, {:https => false})
         jammed.followers(user)
       end
     end

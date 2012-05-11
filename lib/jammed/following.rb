@@ -20,17 +20,17 @@ module Jammed #:nodoc:
     def self.following(username, api_key, opts={})
       case(opts[:order])
       when nil
-        response = request(:get, "/#{username}/following.json", 
-          :query => {:key => api_key})
+        response = request(:get, "/#{username}/following.json", {:https => opts[:https],
+          :query => {:key => api_key}})
       when :date
-        response = request(:get, "/#{username}/following.json", 
-          :query => {:order => 'followedDate', :key => api_key})
+        response = request(:get, "/#{username}/following.json", {:https => opts[:https],
+          :query => {:order => 'followedDate', :key => api_key}})
       when :affinity
-        response = request(:get, "/#{username}/following.json", 
-          :query => {:order => 'affinity', :key => api_key})
+        response = request(:get, "/#{username}/following.json", {:https => opts[:https],
+          :query => {:order => 'affinity', :key => api_key}})
       when :alpha
-        response = request(:get, "/#{username}/following.json", 
-          :query => {:order => 'name', :key => api_key})
+        response = request(:get, "/#{username}/following.json", {:https => opts[:https],
+          :query => {:order => 'name', :key => api_key}})
       else
         return "Cannot order Followings by #{opts[:order]}"
       end

@@ -3,11 +3,12 @@ module Jammed
   class Base
 
     #Stores the API key to be used for all method calls on the Jammed::Base object
-    attr_reader :api_key
+    attr_reader :api_key, :https
 
     #Sets the API key + any options
     def initialize(api_key, opts={})
       @api_key = api_key
+      @https = opts[:https] ? opts[:https] : false
     end
 
     # Calls Jammed::Followers
@@ -26,6 +27,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.followers('IFTFOM', :order => :date)
     def followers(username, opts={})
+      opts = opts.merge({:https => @https})
       Followers.followers(username, @api_key, opts)
     end
 
@@ -45,6 +47,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.following('IFTFOM', :order => :date)
     def following(username, opts={})
+      opts = opts.merge({:https => @https})
       Following.following(username, @api_key, opts)
     end
 
@@ -64,6 +67,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.jams('IFTFOM', :show => :current)
     def jams(username, opts={})
+      opts = opts.merge({:https => @https})
       Jams.jams(username, @api_key, opts)
     end
 
@@ -83,6 +87,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035') 
     #     jammed.likes('IFTFOM', :show => :current)
     def likes(username, opts={})
+      opts = opts.merge({:https => @https})
       Likes.likes(username, @api_key, opts)
     end
 
@@ -93,7 +98,7 @@ module Jammed
     #     jammed = Jammed.new('08972935872035')
     #     jammed.popular_jams
     def popular_jams
-      PopularJams.popular_jams(@api_key)
+      PopularJams.popular_jams(@api_key, @https)
     end
 
     # Calls Jammed::Person.profile

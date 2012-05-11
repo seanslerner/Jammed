@@ -12,11 +12,11 @@ module Jammed
       end
       
       it "parses the JSON return into an array of Jams" do
-        Jammed::PopularJams.popular_jams(api_key).should be_an_instance_of Array
+        Jammed::PopularJams.popular_jams(api_key, false).should be_an_instance_of Array
       end
 
       it "gets popular jams from the api" do
-        Jammed::PopularJams.popular_jams(api_key).should_not be_nil
+        Jammed::PopularJams.popular_jams(api_key, false).should_not be_nil
       end
     end
   end
