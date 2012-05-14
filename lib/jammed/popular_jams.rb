@@ -6,8 +6,8 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::PopularJams.popular_jams('08972935872035') #returns a sample of popular jams
-    def self.popular_jams(api_key)
-      response = request(:get, "/popular.json", :query => {:key => api_key})
+    def self.popular_jams(api_key, https=false)
+      response = request(:get, "/popular.json", {:https => https, :query => {:key => api_key}})
       JSON.parse(response.body)['jams']
     end
   end

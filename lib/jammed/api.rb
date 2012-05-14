@@ -14,7 +14,7 @@ module Jammed
     #
     #     Jammed::API.request(:get, /IFTFOM/followers.json, :query => {:key => 'api_key', :order => 'affinity'})
     def self.request(method, path, opts={})
-      base_uri = 'http://api.thisismyjam.com/1'
+      base_uri = opts[:https] ? 'https://api.thisismyjam.com/1' : 'http://api.thisismyjam.com/1'
 
       params = {}
       params[:path] = path

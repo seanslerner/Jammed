@@ -14,12 +14,14 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #       iftfom = Jammed::User.new('IFTFOM', '08972935872035')
-    def initialize(username, api_key)
+    def initialize(username, api_key, https=false)
       @username = username
       @api_key = api_key
+      @https = https
     end
 
     def followers(opts={})
+      opts = opts.merge({:https => @https})
       @followers ||= Jammed::Followers.followers(@username, @api_key, opts)
     end
 
@@ -39,10 +41,12 @@ module Jammed #:nodoc:
     #     user.followers #returns all followers of IFTFOM
     #     user.followers(:order => :date) #reutrns IFTFOM's followers ordered by date
     def followers!(opts={})
+      opts = opts.merge({:https => @https})
       @followers = Jammed::Followers.followers(@username, @api_key, opts)
     end
 
     def following(opts={})
+      opts = opts.merge({:https => @https})
       @following ||= Jammed::Following.following(@username, @api_key, opts)
     end
 
@@ -62,10 +66,12 @@ module Jammed #:nodoc:
     #     user.following #returns all followings of IFTFOM
     #     user.following(:order => :date) #returns IFTFOM's followings ordered by date
     def following!(opts={})
+      opts = opts.merge({:https => @https})
       @following = Jammed::Following.following(@username, @api_key, opts)
     end
 
     def jams(opts={})
+      opts = opts.merge({:https => @https})
       @jams ||= Jammed::Jams.jams(@username, @api_key, opts)
     end
 
@@ -85,10 +91,12 @@ module Jammed #:nodoc:
     #     user.jams #returns all jams of IFTFOM
     #     user.jams(:show => :past) #returns IFTFOM's past jams
     def jams!(opts={})
+      opts = opts.merge({:https => @https})
       @jams = Jammed::Jams.jams(@username, @api_key, opts)
     end
 
     def likes(opts={})
+      opts = opts.merge({:https => @https})
       @likes ||= Jammed::Likes.likes(@username, @api_key, opts)
     end
 
@@ -108,11 +116,12 @@ module Jammed #:nodoc:
     #     user.likes #returns all likes of IFTFOM
     #     user.likes(:show => :past) #returns IFTFOM's past likes
     def likes!(opts={})
+      opts = opts.merge({:https => @https})
       @likes = Jammed::Likes.likes(@username, @api_key, opts)
     end
     
     def profile
-      @profile ||= Jammed::Person.profile(@username, @api_key)
+      @profile ||= Jammed::Person.profile(@username, @api_key, @https)
     end
 
     # Clears cached Person data with a fresh call to Jammed::Person
@@ -122,7 +131,7 @@ module Jammed #:nodoc:
     #     user = Jammed::User.new('IFTFOM', '08972935872035')
     #     user.profile #returns entire profile of IFTFOM
     def profile!
-      @profile = Jammed::Person.profile(@username, @api_key)
+      @profile = Jammed::Person.profile(@username, @api_key, @https)
     end
 
     # Checks user's profile for attribute and returns value if attribute key is found.

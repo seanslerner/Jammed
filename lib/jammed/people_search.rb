@@ -14,9 +14,9 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::PeopleSearch.search_name('IFTFOM', '08972935872035')
-    def self.search_name(name, api_key)
-      response = request(:get, "/search/person.json", 
-          :query => {:by => 'name', :q => "#{name.split.join('+')}", :key => api_key})
+    def self.search_name(name, api_key, https=false)
+      response = request(:get, "/search/person.json", {:https => https,
+          :query => {:by => 'name', :q => "#{name.split.join('+')}", :key => api_key}})
       JSON.parse(response.body)['people']
     end
 
@@ -30,9 +30,9 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::PeopleSearch.search_artist('beach boys', '08972935872035')
-    def self.search_artist(artist, api_key)
-      response = request(:get, "/search/person.json", 
-          :query => {:by => 'artist', :q => "#{artist.split.join('+')}", :key => api_key})
+    def self.search_artist(artist, api_key, https=false)
+      response = request(:get, "/search/person.json", {:https => https,
+          :query => {:by => 'artist', :q => "#{artist.split.join('+')}", :key => api_key}})
       JSON.parse(response.body)['people']
     end
 
@@ -47,11 +47,11 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::PeopleSearch.search_track('beach boys', 'good vibrations', '08972935872035')
-    def self.search_track(artist, track, api_key)
-      response = request(:get, "/search/person.json",
+    def self.search_track(artist, track, api_key, https=false)
+      response = request(:get, "/search/person.json", {:https => https,
           :query => {:by => 'track', 
                      :q => "#{artist.split.join('+')}|#{track.split.join('+')}",
-                     :key => api_key})
+                     :key => api_key}})
       JSON.parse(response.body)['people'] 
     end
 

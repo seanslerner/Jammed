@@ -20,16 +20,16 @@ module Jammed #:nodoc:
     def self.jams(username, api_key, opts={})
       case(opts[:show])
       when nil
-        response = request(:get, "/#{username}/jams.json", 
-          :query => {:key => api_key})
+        response = request(:get, "/#{username}/jams.json", {:https => opts[:https],
+          :query => {:key => api_key}})
         JSON.parse(response.body)['jams']
       when :past
-        response = request(:get, "/#{username}/jams.json", 
-          :query => {:show => 'past', :key => api_key})
+        response = request(:get, "/#{username}/jams.json", {:https => opts[:https],
+          :query => {:show => 'past', :key => api_key}})
         JSON.parse(response.body)['jams']
       when :current
-        response = request(:get, "/#{username}/jams.json", 
-          :query => {:key => api_key})
+        response = request(:get, "/#{username}/jams.json", {:https => opts[:https],
+          :query => {:key => api_key}})
         jams = JSON.parse(response.body)['jams'][0]
         jams['current'] ? jams : "No Current Jam"
       end

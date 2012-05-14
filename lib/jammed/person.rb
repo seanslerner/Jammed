@@ -6,8 +6,9 @@ module Jammed #:nodoc:
     # ==== Examples
     #
     #     Jammed::Person.profile('IFTFOM', '08972935872035') #returns IFTFOM's profile data
-    def self.profile(username, api_key)
-      response = request(:get, "/#{username}.json", :query => {:key => api_key})
+    def self.profile(username, api_key, https=false)
+      response = request(:get, "/#{username}.json", {:https => https,
+        :query => {:key => api_key}})
       JSON.parse(response.body)["person"]
     end
 
