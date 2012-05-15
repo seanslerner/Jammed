@@ -16,7 +16,7 @@ module Jammed
       end
       it "can use https" do
         HTTParty.should_receive(:get).
-          with("https://api.thisismyjam.com/1/path", {:query=>nil, :body=>nil, :format=>:plain, :headers=>{"Accept"=>"application/json", "Content-Type"=>"application/json; charset=utf-8", "User-Agent"=>"Jammed/0.1.1"}}).
+          with("https://api.thisismyjam.com/1/path", {:query=>nil, :body=>nil, :format=>:plain, :headers=>{"Accept"=>"application/json", "Content-Type"=>"application/json; charset=utf-8", "User-Agent"=>"Jammed/#{Jammed::VERSION}"}}).
           and_return(FakeResponse.new(200, 'this'))
         Jammed::API.request(:get, '/path', :https => true)
       end
