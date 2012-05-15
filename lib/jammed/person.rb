@@ -1,3 +1,5 @@
+require_relative 'api'
+
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /username.json? and accessing user specific data
   class Person < API

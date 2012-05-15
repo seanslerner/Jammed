@@ -1,3 +1,4 @@
+require_relative 'api'
 require 'uri'
 
 module Jammed #:nodoc:

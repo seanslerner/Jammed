@@ -1,3 +1,5 @@
+require_relative 'api'
+
 module Jammed #:nodoc:
   # Provides methods for calling API endpoint /following.json?
   class Following < API
