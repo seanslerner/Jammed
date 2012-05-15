@@ -1,3 +1,5 @@
+require_relative 'api'
+
 module Jammed #:nodoc:
   # Provides method for calling API endpoint /popular.json?
   class PopularJams < API

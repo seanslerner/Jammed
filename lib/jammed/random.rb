@@ -1,3 +1,5 @@
+require_relative 'api'
+
 module Jammed #:nodoc:
   # Provides method for calling API endpoint /random.json?
   class RandomJam < API
