@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "jammed"
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sean Lerner", "Rob Young", "Mike Chlipala"]
-  s.date = "2012-05-15"
+  s.date = "2013-03-06"
   s.description = "Jammed wraps the This Is My Jam API. More information about the This Is My Jam API can be found on their website (http://www.thisismyjam.com/developers)."
   s.email = ["seanslerner@gmail.com"]
   s.extra_rdoc_files = [
@@ -81,7 +81,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/seanslerner/Jammed"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.23"
   s.summary = "A Ruby wrapper for This Is My Jam's API"
   s.test_files = ["spec/jammed/api_spec.rb", "spec/jammed/base_spec.rb", "spec/jammed/error_spec.rb", "spec/jammed/followers_spec.rb", "spec/jammed/following_spec.rb", "spec/jammed/jams_spec.rb", "spec/jammed/likes_spec.rb", "spec/jammed/people_search_spec.rb", "spec/jammed/person_spec.rb", "spec/jammed/popular_jams_spec.rb", "spec/jammed/random_spec.rb", "spec/jammed/suggested_people_spec.rb", "spec/jammed/user_spec.rb", "spec/sample_responses/bad_request.json", "spec/sample_responses/followers.json", "spec/sample_responses/followers_affinity.json", "spec/sample_responses/followers_date.json", "spec/sample_responses/followers_name.json", "spec/sample_responses/following.json", "spec/sample_responses/following_affinity.json", "spec/sample_responses/following_date.json", "spec/sample_responses/following_name.json", "spec/sample_responses/jams.json", "spec/sample_responses/jams_past.json", "spec/sample_responses/likes.json", "spec/sample_responses/likes_current.json", "spec/sample_responses/likes_past.json", "spec/sample_responses/not_found.json", "spec/sample_responses/person.json", "spec/sample_responses/popular.json", "spec/sample_responses/random.json", "spec/sample_responses/search_artist.json", "spec/sample_responses/search_name.json", "spec/sample_responses/search_track.json", "spec/sample_responses/suggested_people.json", "spec/spec_helper.rb"]
 
@@ -89,27 +89,27 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<httparty>, ["~> 0.8.2"])
-      s.add_runtime_dependency(%q<json>, ["~> 1.7.1"])
-      s.add_development_dependency(%q<rake>, ["~> 0.9.2.2"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.9.0"])
-      s.add_development_dependency(%q<webmock>, ["~> 1.8.6"])
+      s.add_runtime_dependency(%q<httparty>, ["~> 0.10.2"])
+      s.add_runtime_dependency(%q<json>, ["~> 1.7.7"])
+      s.add_development_dependency(%q<rake>, ["~> 10.0.3"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_development_dependency(%q<webmock>, ["~> 1.11.0"])
     else
-      s.add_dependency(%q<httparty>, ["~> 0.8.2"])
-      s.add_dependency(%q<json>, ["~> 1.7.1"])
-      s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
-      s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
-      s.add_dependency(%q<rspec>, ["~> 2.9.0"])
-      s.add_dependency(%q<webmock>, ["~> 1.8.6"])
+      s.add_dependency(%q<httparty>, ["~> 0.10.2"])
+      s.add_dependency(%q<json>, ["~> 1.7.7"])
+      s.add_dependency(%q<rake>, ["~> 10.0.3"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+      s.add_dependency(%q<webmock>, ["~> 1.11.0"])
     end
   else
-    s.add_dependency(%q<httparty>, ["~> 0.8.2"])
-    s.add_dependency(%q<json>, ["~> 1.7.1"])
-    s.add_dependency(%q<rake>, ["~> 0.9.2.2"])
-    s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
-    s.add_dependency(%q<rspec>, ["~> 2.9.0"])
-    s.add_dependency(%q<webmock>, ["~> 1.8.6"])
+    s.add_dependency(%q<httparty>, ["~> 0.10.2"])
+    s.add_dependency(%q<json>, ["~> 1.7.7"])
+    s.add_dependency(%q<rake>, ["~> 10.0.3"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+    s.add_dependency(%q<rspec>, ["~> 2.13.0"])
+    s.add_dependency(%q<webmock>, ["~> 1.11.0"])
   end
 end
 
